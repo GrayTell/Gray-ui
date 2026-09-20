@@ -1,0 +1,954 @@
+[
+  {
+    "name": "accordion",
+    "title": "Accordion",
+    "description": "The official shadcn/ui Accordion component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/accordion.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "alert",
+    "title": "Alert",
+    "description": "The official shadcn/ui Alert component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/alert.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "alert-dialog",
+    "title": "Alert Dialog",
+    "description": "The official shadcn/ui Alert Dialog component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/alert-dialog.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "aspect-ratio",
+    "title": "Aspect Ratio",
+    "description": "The official shadcn/ui Aspect Ratio component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/aspect-ratio.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "avatar",
+    "title": "Avatar",
+    "description": "The official shadcn/ui Avatar component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/avatar.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "badge",
+    "title": "Badge",
+    "description": "The official shadcn/ui Badge component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/badge.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "breadcrumb",
+    "title": "Breadcrumb",
+    "description": "The official shadcn/ui Breadcrumb component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/breadcrumb.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button",
+    "title": "Button",
+    "description": "The official shadcn/ui Button component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/button.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-group",
+    "title": "Button Group",
+    "description": "The official shadcn/ui Button Group component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn"
+    ],
+    "registryDependencies": [
+      "button",
+      "separator"
+    ],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/button-group.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "calendar",
+    "title": "Calendar",
+    "description": "The official shadcn/ui Calendar component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "react-day-picker@latest",
+      "date-fns"
+    ],
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/calendar.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "card",
+    "title": "Card",
+    "description": "The official shadcn/ui Card component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/card.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "carousel",
+    "title": "Carousel",
+    "description": "The official shadcn/ui Carousel component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "embla-carousel-react"
+    ],
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/carousel.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "chart",
+    "title": "Chart",
+    "description": "The official shadcn/ui Chart component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "recharts@3.8.0",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "card"
+    ],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/chart.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "checkbox",
+    "title": "Checkbox",
+    "description": "The official shadcn/ui Checkbox component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/checkbox.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "collapsible",
+    "title": "Collapsible",
+    "description": "The official shadcn/ui Collapsible component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/collapsible.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "combobox",
+    "title": "Combobox",
+    "description": "The official shadcn/ui Combobox component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "@base-ui/react"
+    ],
+    "registryDependencies": [
+      "button",
+      "input-group"
+    ],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/combobox.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "command",
+    "title": "Command",
+    "description": "The official shadcn/ui Command component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "cmdk"
+    ],
+    "registryDependencies": [
+      "dialog"
+    ],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/command.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "context-menu",
+    "title": "Context Menu",
+    "description": "The official shadcn/ui Context Menu component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/context-menu.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "dialog",
+    "title": "Dialog",
+    "description": "The official shadcn/ui Dialog component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/dialog.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "drawer",
+    "title": "Drawer",
+    "description": "The official shadcn/ui Drawer component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "vaul"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/drawer.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "dropdown-menu",
+    "title": "Dropdown Menu",
+    "description": "The official shadcn/ui Dropdown Menu component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/dropdown-menu.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "empty",
+    "title": "Empty",
+    "description": "The official shadcn/ui Empty component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/empty.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "field",
+    "title": "Field",
+    "description": "The official shadcn/ui Field component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn"
+    ],
+    "registryDependencies": [
+      "label",
+      "separator"
+    ],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/field.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "form",
+    "title": "Form",
+    "description": "The official shadcn/ui Form component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui",
+      "@hookform/resolvers",
+      "zod",
+      "react-hook-form"
+    ],
+    "registryDependencies": [
+      "button",
+      "label"
+    ],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/form.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "hover-card",
+    "title": "Hover Card",
+    "description": "The official shadcn/ui Hover Card component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/hover-card.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "input",
+    "title": "Input",
+    "description": "The official shadcn/ui Input component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/input.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "input-otp",
+    "title": "Input OTP",
+    "description": "The official shadcn/ui Input OTP component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "input-otp"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/input-otp.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "item",
+    "title": "Item",
+    "description": "The official shadcn/ui Item component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [
+      "separator"
+    ],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/item.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "kbd",
+    "title": "Kbd",
+    "description": "The official shadcn/ui Kbd component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/kbd.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "label",
+    "title": "Label",
+    "description": "The official shadcn/ui Label component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/label.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "menubar",
+    "title": "Menubar",
+    "description": "The official shadcn/ui Menubar component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/menubar.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "navigation-menu",
+    "title": "Navigation Menu",
+    "description": "The official shadcn/ui Navigation Menu component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/navigation-menu.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "pagination",
+    "title": "Pagination",
+    "description": "The official shadcn/ui Pagination component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn"
+    ],
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/pagination.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "popover",
+    "title": "Popover",
+    "description": "The official shadcn/ui Popover component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/popover.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "progress",
+    "title": "Progress",
+    "description": "The official shadcn/ui Progress component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/progress.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "radio-group",
+    "title": "Radio Group",
+    "description": "The official shadcn/ui Radio Group component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/radio-group.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "resizable",
+    "title": "Resizable",
+    "description": "The official shadcn/ui Resizable component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "react-resizable-panels@^4"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/resizable.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "scroll-area",
+    "title": "Scroll Area",
+    "description": "The official shadcn/ui Scroll Area component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/scroll-area.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "select",
+    "title": "Select",
+    "description": "The official shadcn/ui Select component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/select.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "separator",
+    "title": "Separator",
+    "description": "The official shadcn/ui Separator component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/separator.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "sheet",
+    "title": "Sheet",
+    "description": "The official shadcn/ui Sheet component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/sheet.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "sidebar",
+    "title": "Sidebar",
+    "description": "The official shadcn/ui Sidebar component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui",
+      "class-variance-authority",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "button",
+      "separator",
+      "sheet",
+      "tooltip",
+      "input",
+      "use-mobile",
+      "skeleton"
+    ],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/sidebar.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "skeleton",
+    "title": "Skeleton",
+    "description": "The official shadcn/ui Skeleton component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/skeleton.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "slider",
+    "title": "Slider",
+    "description": "The official shadcn/ui Slider component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/slider.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "sonner",
+    "title": "Sonner",
+    "description": "The official shadcn/ui Sonner component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "sonner",
+      "next-themes"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/sonner.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "spinner",
+    "title": "Spinner",
+    "description": "The official shadcn/ui Spinner component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "class-variance-authority"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/spinner.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "switch",
+    "title": "Switch",
+    "description": "The official shadcn/ui Switch component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/switch.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "table",
+    "title": "Table",
+    "description": "The official shadcn/ui Table component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/table.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "tabs",
+    "title": "Tabs",
+    "description": "The official shadcn/ui Tabs component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/tabs.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "textarea",
+    "title": "Textarea",
+    "description": "The official shadcn/ui Textarea component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/textarea.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "toggle",
+    "title": "Toggle",
+    "description": "The official shadcn/ui Toggle component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/toggle.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "toggle-group",
+    "title": "Toggle Group",
+    "description": "The official shadcn/ui Toggle Group component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [
+      "toggle"
+    ],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/toggle-group.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "tooltip",
+    "title": "Tooltip",
+    "description": "The official shadcn/ui Tooltip component (new-york-v4), served by the Gray registry.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn",
+      "radix-ui"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/tooltip.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "input-group",
+    "title": "Input Group",
+    "description": "Input with icon, separator and addon slots for composing rich text-field clusters.",
+    "type": "registry:ui",
+    "dependencies": [
+      "cn"
+    ],
+    "registryDependencies": [
+      "button",
+      "input",
+      "textarea"
+    ],
+    "files": [
+      {
+        "path": "registry/new-york-v4/ui/input-group.tsx",
+        "type": "registry:ui",
+        "target": null
+      }
+    ]
+  }
+]
