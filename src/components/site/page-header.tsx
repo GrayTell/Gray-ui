@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 
 /**
- * Exact port of shadcn/ui v4 components/page-header.tsx.
+ * Gray UI page header.
  */
 function PageHeader({
   className,

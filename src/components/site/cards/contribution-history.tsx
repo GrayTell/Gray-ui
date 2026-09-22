@@ -10,7 +10,7 @@ import {
 import { Item, ItemContent, ItemDescription } from '@/components/ui/item'
 
 /**
- * Exact port of shadcn/ui v4 homepage cards/contribution-history.tsx.
+ * Gray UI homepage card: contribution-history.
  */
 const chartData = [
   { month: 'Dec', amount: 800 },

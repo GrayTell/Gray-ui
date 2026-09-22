@@ -16,7 +16,7 @@ import {
 import { Progress } from '@/components/ui/progress'
 
 /**
- * Exact port of shadcn/ui v4 homepage cards/savings-targets.tsx.
+ * Gray UI homepage card: savings-targets.
  */
 export function SavingsTargets() {
   return (

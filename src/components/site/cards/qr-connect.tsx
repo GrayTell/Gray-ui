@@ -7,7 +7,7 @@ import {
 } from '@/components/ui/card'
 
 /**
- * Exact port of shadcn/ui v4 homepage cards/qr-connect.tsx.
+ * Gray UI homepage card: qr-connect.
  */
 const qrCells = [
   '111111100101101111111',

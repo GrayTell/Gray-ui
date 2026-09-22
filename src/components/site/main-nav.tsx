@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 
 /**
- * Exact port of shadcn/ui v4 components/main-nav.tsx.
+ * Gray UI main navigation.
  */
 export function MainNav({
   items,

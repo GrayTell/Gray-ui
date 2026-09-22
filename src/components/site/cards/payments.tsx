@@ -33,7 +33,7 @@ import {
 } from '@/components/ui/item'
 
 /**
- * Exact port of shadcn/ui v4 homepage cards/payments.tsx.
+ * Gray UI homepage card: payments.
  */
 export function Payments() {
   return (

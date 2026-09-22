@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/empty'
 
 /**
- * Exact port of shadcn/ui v4 homepage cards/empty-distribute-track.tsx.
+ * Gray UI homepage card: empty-distribute-track.
  */
 export function EmptyDistributeTrack() {
   return (

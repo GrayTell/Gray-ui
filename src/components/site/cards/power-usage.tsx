@@ -8,7 +8,7 @@ import {
 import { Separator } from '@/components/ui/separator'
 
 /**
- * Exact port of shadcn/ui v4 homepage cards/power-usage.tsx.
+ * Gray UI homepage card: power-usage.
  */
 const chartData = [
   { hour: '6a', usage: 1.2 },

@@ -5,10 +5,10 @@
 export const siteConfig = {
   name: 'Gray UI',
   /** Homepage headline. */
-  tagline: 'The Foundation for your Design System',
+  tagline: 'The Backbone of Your Design System',
   /** Homepage description. */
   description:
-    'Composable, accessible components with thoughtful defaults. Build your own component library with code you can customize, extend, and make your own.',
+    'Composable, accessible React components with sensible defaults. Ship a design system you truly own — every piece arrives as source code you can bend, extend and rebuild.',
   /** Production origin — the canonical Gray UI domain, used everywhere. */
   url: 'https://gray-ui.vercel.app',
   author: { name: 'Graytell Labs', url: 'https://github.com/graytell' },

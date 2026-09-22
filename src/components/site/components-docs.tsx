@@ -13,9 +13,9 @@ import {
 } from '@/lib/component-registry'
 
 /**
- * Docs-style shell + sidebar for the /components section, mirroring the
- * shadcn/ui docs layout: sticky left sidebar with a Sections group and one
- * group per component category, on a two-column grid.
+ * Docs-style shell + sidebar for the /components section: sticky left
+ * sidebar with a Sections group and one group per component category,
+ * on a two-column grid.
  */
 
 const SECTIONS = [
@@ -44,7 +44,7 @@ function SidebarButton({
       data-active={active ? 'true' : undefined}
       className="relative h-[30px] w-fit overflow-visible rounded-md border border-transparent px-2 text-[0.8rem] font-medium text-foreground outline-none after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring data-[active=true]:border-accent data-[active=true]:bg-accent"
     >
-      {/* Full-column hover strip, like the shadcn docs sidebar. */}
+      {/* Full-column hover strip behind each sidebar row. */}
       <span className="absolute inset-0 flex w-56 bg-transparent" aria-hidden="true" />
       <span className="relative z-10 flex items-center gap-2">{children}</span>
     </button>
@@ -53,6 +53,22 @@ function SidebarButton({
 
 export function ComponentsSidebar() {
   const pathname = usePathname()
+  const scrollRef = React.useRef<HTMLDivElement | null>(null)
+  const activeRef = React.useRef<HTMLAnchorElement | null>(null)
+
+  /* Keep the active component visible in the sidebar on direct loads
+     and prev/next jumps — without fighting the user's scroll position. */
+  React.useEffect(() => {
+    if (!pathname.startsWith('/components/')) return
+    const container = scrollRef.current
+    const active = activeRef.current
+    if (!container || !active) return
+    const cr = container.getBoundingClientRect()
+    const ar = active.getBoundingClientRect()
+    if (ar.top < cr.top || ar.bottom > cr.bottom) {
+      container.scrollTop += ar.top - cr.top - cr.height / 2 + ar.height / 2
+    }
+  }, [pathname])
 
   return (
     <div
@@ -63,12 +79,15 @@ export function ComponentsSidebar() {
         } as React.CSSProperties
       }
     >
-      {/* Right-edge hairline, like the shadcn docs sidebar. */}
+      {/* Right-edge hairline on the sidebar column. */}
       <div
         aria-hidden="true"
         className="absolute top-12 right-2 bottom-0 hidden h-full w-px bg-[linear-gradient(to_bottom,transparent_0%,var(--border)_10%,var(--border)_90%,transparent_100%)] lg:block"
       />
-      <div className="no-scrollbar h-full w-(--sidebar-menu-width) overflow-x-hidden overflow-y-auto pl-2.5">
+      <div
+        ref={scrollRef}
+        className="no-scrollbar h-full w-(--sidebar-menu-width) overflow-x-hidden overflow-y-auto pl-2.5"
+      >
         {/* Sections */}
         <div className="relative pt-12 pb-2">
           <p className="mb-1 flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-muted-foreground">
@@ -110,12 +129,15 @@ export function ComponentsSidebar() {
               <div className="flex flex-col gap-0.5">
                 {entries.map((entry) => {
                   const href = `/components/${entry.slug}`
+                  const isActive = pathname === href
                   return (
-                    <Link key={entry.slug} href={href} className="w-fit">
-                      <SidebarButton
-                        href={href}
-                        active={pathname === href}
-                      >
+                    <Link
+                      key={entry.slug}
+                      href={href}
+                      ref={isActive ? activeRef : undefined}
+                      className="w-fit"
+                    >
+                      <SidebarButton href={href} active={isActive}>
                         {entry.name}
                       </SidebarButton>
                     </Link>
@@ -156,7 +178,8 @@ export function ComponentsLayout({
 
 /**
  * Back-compat: old links point at /components#dialog. The components
- * section now uses real URLs, so forward any known hash to its page.
+ * section now uses real URLs, so forward any known hash to its page
+ * without yanking the viewport around.
  */
 export function HashRedirect() {
   const router = useRouter()
@@ -165,7 +188,7 @@ export function HashRedirect() {
     const forward = () => {
       const slug = window.location.hash.replace('#', '')
       if (slug && getComponent(slug)) {
-        router.replace(`/components/${slug}`)
+        router.replace(`/components/${slug}`, { scroll: false })
       }
     }
     forward()

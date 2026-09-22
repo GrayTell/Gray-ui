@@ -2,7 +2,7 @@
   {
     "name": "accordion",
     "title": "Accordion",
-    "description": "The official shadcn/ui Accordion component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Accordion component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -19,7 +19,7 @@
   {
     "name": "alert",
     "title": "Alert",
-    "description": "The official shadcn/ui Alert component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Alert component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn"
@@ -35,7 +35,7 @@
   {
     "name": "alert-dialog",
     "title": "Alert Dialog",
-    "description": "The official shadcn/ui Alert Dialog component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Alert Dialog component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -54,7 +54,7 @@
   {
     "name": "aspect-ratio",
     "title": "Aspect Ratio",
-    "description": "The official shadcn/ui Aspect Ratio component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Aspect Ratio component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "radix-ui"
@@ -70,7 +70,7 @@
   {
     "name": "avatar",
     "title": "Avatar",
-    "description": "The official shadcn/ui Avatar component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Avatar component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -87,7 +87,7 @@
   {
     "name": "badge",
     "title": "Badge",
-    "description": "The official shadcn/ui Badge component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Badge component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -104,7 +104,7 @@
   {
     "name": "breadcrumb",
     "title": "Breadcrumb",
-    "description": "The official shadcn/ui Breadcrumb component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Breadcrumb component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -121,7 +121,7 @@
   {
     "name": "button",
     "title": "Button",
-    "description": "The official shadcn/ui Button component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Button component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -138,7 +138,7 @@
   {
     "name": "button-group",
     "title": "Button Group",
-    "description": "The official shadcn/ui Button Group component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Button Group component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn"
@@ -157,7 +157,7 @@
   {
     "name": "calendar",
     "title": "Calendar",
-    "description": "The official shadcn/ui Calendar component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Calendar component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -177,7 +177,7 @@
   {
     "name": "card",
     "title": "Card",
-    "description": "The official shadcn/ui Card component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Card component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn"
@@ -193,7 +193,7 @@
   {
     "name": "carousel",
     "title": "Carousel",
-    "description": "The official shadcn/ui Carousel component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Carousel component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -212,7 +212,7 @@
   {
     "name": "chart",
     "title": "Chart",
-    "description": "The official shadcn/ui Chart component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Chart component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -232,7 +232,7 @@
   {
     "name": "checkbox",
     "title": "Checkbox",
-    "description": "The official shadcn/ui Checkbox component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Checkbox component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -249,7 +249,7 @@
   {
     "name": "collapsible",
     "title": "Collapsible",
-    "description": "The official shadcn/ui Collapsible component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Collapsible component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "radix-ui"
@@ -265,7 +265,7 @@
   {
     "name": "combobox",
     "title": "Combobox",
-    "description": "The official shadcn/ui Combobox component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Combobox component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -285,7 +285,7 @@
   {
     "name": "command",
     "title": "Command",
-    "description": "The official shadcn/ui Command component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Command component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -304,7 +304,7 @@
   {
     "name": "context-menu",
     "title": "Context Menu",
-    "description": "The official shadcn/ui Context Menu component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Context Menu component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -321,7 +321,7 @@
   {
     "name": "dialog",
     "title": "Dialog",
-    "description": "The official shadcn/ui Dialog component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Dialog component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -338,7 +338,7 @@
   {
     "name": "drawer",
     "title": "Drawer",
-    "description": "The official shadcn/ui Drawer component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Drawer component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -355,7 +355,7 @@
   {
     "name": "dropdown-menu",
     "title": "Dropdown Menu",
-    "description": "The official shadcn/ui Dropdown Menu component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Dropdown Menu component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -372,7 +372,7 @@
   {
     "name": "empty",
     "title": "Empty",
-    "description": "The official shadcn/ui Empty component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Empty component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn"
@@ -388,7 +388,7 @@
   {
     "name": "field",
     "title": "Field",
-    "description": "The official shadcn/ui Field component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Field component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn"
@@ -407,7 +407,7 @@
   {
     "name": "form",
     "title": "Form",
-    "description": "The official shadcn/ui Form component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Form component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -430,7 +430,7 @@
   {
     "name": "hover-card",
     "title": "Hover Card",
-    "description": "The official shadcn/ui Hover Card component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Hover Card component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -447,7 +447,7 @@
   {
     "name": "input",
     "title": "Input",
-    "description": "The official shadcn/ui Input component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Input component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn"
@@ -463,7 +463,7 @@
   {
     "name": "input-otp",
     "title": "Input OTP",
-    "description": "The official shadcn/ui Input OTP component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Input OTP component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -480,7 +480,7 @@
   {
     "name": "item",
     "title": "Item",
-    "description": "The official shadcn/ui Item component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Item component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -499,7 +499,7 @@
   {
     "name": "kbd",
     "title": "Kbd",
-    "description": "The official shadcn/ui Kbd component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Kbd component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn"
@@ -515,7 +515,7 @@
   {
     "name": "label",
     "title": "Label",
-    "description": "The official shadcn/ui Label component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Label component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -532,7 +532,7 @@
   {
     "name": "menubar",
     "title": "Menubar",
-    "description": "The official shadcn/ui Menubar component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Menubar component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -549,7 +549,7 @@
   {
     "name": "navigation-menu",
     "title": "Navigation Menu",
-    "description": "The official shadcn/ui Navigation Menu component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Navigation Menu component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -566,7 +566,7 @@
   {
     "name": "pagination",
     "title": "Pagination",
-    "description": "The official shadcn/ui Pagination component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Pagination component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn"
@@ -584,7 +584,7 @@
   {
     "name": "popover",
     "title": "Popover",
-    "description": "The official shadcn/ui Popover component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Popover component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -601,7 +601,7 @@
   {
     "name": "progress",
     "title": "Progress",
-    "description": "The official shadcn/ui Progress component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Progress component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -618,7 +618,7 @@
   {
     "name": "radio-group",
     "title": "Radio Group",
-    "description": "The official shadcn/ui Radio Group component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Radio Group component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -635,7 +635,7 @@
   {
     "name": "resizable",
     "title": "Resizable",
-    "description": "The official shadcn/ui Resizable component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Resizable component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -652,7 +652,7 @@
   {
     "name": "scroll-area",
     "title": "Scroll Area",
-    "description": "The official shadcn/ui Scroll Area component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Scroll Area component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -669,7 +669,7 @@
   {
     "name": "select",
     "title": "Select",
-    "description": "The official shadcn/ui Select component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Select component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -686,7 +686,7 @@
   {
     "name": "separator",
     "title": "Separator",
-    "description": "The official shadcn/ui Separator component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Separator component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -703,7 +703,7 @@
   {
     "name": "sheet",
     "title": "Sheet",
-    "description": "The official shadcn/ui Sheet component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Sheet component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -720,7 +720,7 @@
   {
     "name": "sidebar",
     "title": "Sidebar",
-    "description": "The official shadcn/ui Sidebar component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Sidebar component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -747,7 +747,7 @@
   {
     "name": "skeleton",
     "title": "Skeleton",
-    "description": "The official shadcn/ui Skeleton component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Skeleton component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn"
@@ -763,7 +763,7 @@
   {
     "name": "slider",
     "title": "Slider",
-    "description": "The official shadcn/ui Slider component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Slider component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -780,7 +780,7 @@
   {
     "name": "sonner",
     "title": "Sonner",
-    "description": "The official shadcn/ui Sonner component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Sonner component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "sonner",
@@ -797,7 +797,7 @@
   {
     "name": "spinner",
     "title": "Spinner",
-    "description": "The official shadcn/ui Spinner component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Spinner component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -814,7 +814,7 @@
   {
     "name": "switch",
     "title": "Switch",
-    "description": "The official shadcn/ui Switch component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Switch component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -831,7 +831,7 @@
   {
     "name": "table",
     "title": "Table",
-    "description": "The official shadcn/ui Table component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Table component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn"
@@ -847,7 +847,7 @@
   {
     "name": "tabs",
     "title": "Tabs",
-    "description": "The official shadcn/ui Tabs component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Tabs component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -864,7 +864,7 @@
   {
     "name": "textarea",
     "title": "Textarea",
-    "description": "The official shadcn/ui Textarea component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Textarea component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn"
@@ -880,7 +880,7 @@
   {
     "name": "toggle",
     "title": "Toggle",
-    "description": "The official shadcn/ui Toggle component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Toggle component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -897,7 +897,7 @@
   {
     "name": "toggle-group",
     "title": "Toggle Group",
-    "description": "The official shadcn/ui Toggle Group component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Toggle Group component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",
@@ -916,7 +916,7 @@
   {
     "name": "tooltip",
     "title": "Tooltip",
-    "description": "The official shadcn/ui Tooltip component (new-york-v4), served by the Gray registry.",
+    "description": "The Gray Tooltip component, served by the Gray registry.",
     "type": "registry:ui",
     "dependencies": [
       "cn",

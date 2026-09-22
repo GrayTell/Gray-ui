@@ -17,7 +17,7 @@ import { isBlockedBot } from "@/lib/bot-blocklist";
 /** Routes that must never be gated by the UA policy. */
 const EXEMPT_PATTERNS = [
   /^\/api(?:\/|$)/, // Gray AI chat + API surface
-  /^\/r(?:\/|$)/, // shadcn registry — the product's core, always open
+  /^\/r(?:\/|$)/, // registry endpoints — the product core, always open
   /^\/_next(?:\/|$)/, // build assets (matcher also skips static/image)
   /^\/robots\.txt$/, // must be readable to declare the rules
   /^\/sitemap\.xml$/,

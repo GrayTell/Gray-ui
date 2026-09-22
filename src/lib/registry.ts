@@ -132,8 +132,8 @@ export const EXCLUSIVE_ITEMS: GrayItem[] = [
 ]
 
 /**
- * `toast` was removed from the shadcn v4 registry, so Gray rebuilds it from
- * local sources (src/components/ui/toast.tsx, toaster.tsx, use-toast.ts).
+ * `toast` ships from Gray's own sources (src/components/ui/toast.tsx,
+ * toaster.tsx, use-toast.ts).
  * The /r/toast.json route attaches the file contents at request time.
  */
 export const TOAST_ITEM: GrayItem = {
@@ -141,7 +141,7 @@ export const TOAST_ITEM: GrayItem = {
   type: 'registry:ui',
   title: 'Toast',
   description:
-    'The official shadcn/ui Toast component (new-york-v4), rebuilt from source by the Gray registry. Ships the toaster, the toast primitives and the use-toast hook.',
+    'The Gray toast component. Ships the toaster, the toast primitives and the use-toast hook.',
   dependencies: ['@radix-ui/react-toast', 'class-variance-authority'],
   registryDependencies: [],
   files: [
@@ -179,7 +179,7 @@ export const ALL_REGISTRY_ITEMS: GrayItem[] = [
 ]
 
 /**
- * The date-picker is a Gray original, not a stock shadcn item — this alias
+ * The date-picker is a Gray original — this alias
  * points at its entry in EXCLUSIVE_ITEMS so callers never hard-code a lookup.
  */
 export const DATE_PICKER: GrayItem = EXCLUSIVE_ITEMS.find(

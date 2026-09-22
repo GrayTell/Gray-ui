@@ -11,7 +11,7 @@ import { Field, FieldGroup, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 
 /**
- * Exact port of shadcn/ui v4 homepage cards/new-milestone.tsx.
+ * Gray UI homepage card: new-milestone.
  */
 export function NewMilestone() {
   return (

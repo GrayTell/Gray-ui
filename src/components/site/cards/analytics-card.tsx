@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/card'
 
 /**
- * Exact port of shadcn/ui v4 homepage cards/analytics-card.tsx.
+ * Gray UI homepage card: analytics-card.
  */
 const areaPath = 'M0 52L18 40L36 46L54 70L72 50L100 49V86H0Z'
 const strokePath = 'M0 52L18 40L36 46L54 70L72 50L100 49'

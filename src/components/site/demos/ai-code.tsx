@@ -668,7 +668,7 @@ export function PackageInfoDemo() {
           </PackageInfoHeader>
           <PackageInfoVersion />
           <PackageInfoDescription>
-            A monochrome shadcn/ui-style registry by @letsvan at Graytell.
+            A monochrome component registry by Graytell Labs.
           </PackageInfoDescription>
           <PackageInfoContent>
             <PackageInfoDependencies>

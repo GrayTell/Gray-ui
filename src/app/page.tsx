@@ -14,9 +14,7 @@ import { Button } from '@/components/ui/button'
 import { siteConfig } from '@/lib/site'
 
 /**
- * Exact port of shadcn/ui v4 homepage (app/(app)/(root)/page.tsx).
- * Same structure, copy, fonts and card grid — rendered with Gray UI's
- * own component library.
+ * Gray UI homepage — hero, actions and the live card grid.
  */
 export default function IndexPage() {
   return (
@@ -37,7 +35,7 @@ export default function IndexPage() {
                 <Link href="/docs#installation">Get Started</Link>
               </Button>
               <Button asChild variant="secondary">
-                <Link href="/docs#registry">View Components</Link>
+                <Link href="/components">View Components</Link>
               </Button>
             </PageActions>
           </PageHeader>

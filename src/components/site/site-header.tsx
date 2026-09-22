@@ -27,7 +27,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 w-full bg-background">
       <div className="container-wrapper px-6">
         <div className="flex h-(--header-height) items-center **:data-[slot=separator]:h-4!">
-          {/* Mobile: logo. shadcn keeps the wordmark on small screens. */}
+          {/* Mobile: logo wordmark. */}
           <Link
             href="/"
             aria-label="Gray UI home"

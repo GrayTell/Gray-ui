@@ -15,7 +15,7 @@ import { SidebarNav } from './sidebar-nav'
 import { UIElements } from './ui-elements'
 
 /**
- * Exact port of shadcn/ui v4 homepage cards/index.tsx (CardsDemo).
+ * Gray UI homepage card grid (CardsDemo).
  * Differences from upstream: the decorative skeleton rails (>=2200px
  * background columns) and the MessageScrollerDemo example are omitted —
  * every visible card is rendered by Gray UI's own component library.

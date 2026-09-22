@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { CommandMenu } from '@/components/site/command-menu'
 
 /**
- * Header search trigger in shadcn/ui v4 style: outline button with ⌘K hint
+ * Header search trigger: outline button with ⌘K hint
  * that opens the command menu. Self-contained client island.
  */
 export function SearchTrigger() {

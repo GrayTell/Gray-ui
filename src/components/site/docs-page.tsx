@@ -421,7 +421,7 @@ export function DocsPage() {
                 <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[13px] text-foreground">
                   {origin}/r
                 </code>{' '}
-                as standard shadcn registry items — one JSON manifest per component
+                as standard registry items — one JSON manifest per component
                 with the full source, dependencies and file targets. The CLI resolves
                 transitive dependencies (a{' '}
                 <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[13px] text-foreground">sidebar</code>{' '}

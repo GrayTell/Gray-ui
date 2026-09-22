@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/field'
 
 /**
- * Exact port of shadcn/ui v4 homepage cards/notification-settings.tsx.
+ * Gray UI homepage card: notification-settings.
  */
 const NOTIFICATIONS = [
   {

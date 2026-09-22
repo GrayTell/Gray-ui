@@ -20,7 +20,7 @@ import {
 } from '@/components/ui/item'
 
 /**
- * Exact port of shadcn/ui v4 homepage cards/account-access.tsx.
+ * Gray UI homepage card: account-access.
  */
 export function AccountAccess() {
   return (

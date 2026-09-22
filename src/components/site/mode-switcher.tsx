@@ -6,7 +6,7 @@ import { useTheme } from 'next-themes'
 import { Button } from '@/components/ui/button'
 
 /**
- * Exact port of shadcn/ui v4 components/mode-switcher.tsx
+ * Gray UI theme mode switcher
  * (without the meta-color hook, which is docs-specific).
  */
 export function ModeSwitcher({

@@ -4,7 +4,7 @@ import { ArrowRightIcon } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 
 /**
- * Exact port of shadcn/ui v4 components/announcement.tsx.
+ * Gray UI announcement badge.
  */
 export function Announcement() {
   return (

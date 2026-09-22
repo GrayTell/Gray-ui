@@ -43,7 +43,7 @@ import { Switch } from '@/components/ui/switch'
 import { Textarea } from '@/components/ui/textarea'
 
 /**
- * Exact port of shadcn/ui v4 homepage cards/ui-elements.tsx.
+ * Gray UI homepage card: ui-elements.
  */
 export function UIElements() {
   return (

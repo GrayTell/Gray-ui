@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { CodeBlock } from '@/components/site/code-block'
 
 /**
- * Component preview in the shadcn/ui docs style: a rounded-2xl bordered
+ * Component preview: a rounded-2xl bordered
  * card with the live demo on top and the usage code below. On small
  * screens the code collapses behind a "View Code" button.
  */

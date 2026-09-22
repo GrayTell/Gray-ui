@@ -8,9 +8,9 @@ import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 
 /**
- * Port of shadcn/ui v4 components/github-link.tsx.
+ * Gray UI header GitHub link.
  * Client-side fetch so the header works in both server and client
- * page graphs (shadcn's version is a server component).
+ * page graphs.
  */
 export function GitHubLink() {
   const [stars, setStars] = React.useState<string | null>(null)

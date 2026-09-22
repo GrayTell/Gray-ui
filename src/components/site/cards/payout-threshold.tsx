@@ -28,7 +28,7 @@ import {
 import { Textarea } from '@/components/ui/textarea'
 
 /**
- * Exact port of shadcn/ui v4 homepage cards/payout-threshold.tsx.
+ * Gray UI homepage card: payout-threshold.
  */
 const CURRENCIES = [
   { label: 'USD — United States Dollar', value: 'usd' },

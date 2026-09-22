@@ -11,7 +11,7 @@ import { Item, ItemContent } from '@/components/ui/item'
 import { Separator } from '@/components/ui/separator'
 
 /**
- * Exact port of shadcn/ui v4 homepage cards/claimable-balance.tsx.
+ * Gray UI homepage card: claimable-balance.
  */
 const netRoyalties = 1248.75
 const processingFee = 37.46

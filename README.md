@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="https://gray-ui.vercel.app/opengraph-image" alt="Gray UI — The Foundation for your Design System" width="100%">
+<img src="https://gray-ui.vercel.app/opengraph-image" alt="Gray UI — The Backbone of Your Design System" width="100%">
 
 # Gray UI
 
-**The Foundation for your Design System**
+**The Backbone of Your Design System**
 
 110 copy-paste React components in a strict monochrome design system —
 core UI primitives, dashboard cards and a full AI chat suite, all installable

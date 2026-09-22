@@ -12,7 +12,7 @@ export type PackageManager = (typeof MANAGERS)[number]
 /**
  * Build the add-component command for every package manager.
  * Delegates to the shared registry helper so the commands always match the
- * shadcn-compatible registry URLs served at `/r/<slug>.json`.
+ * CLI-compatible registry URLs served at `/r/<slug>.json`.
  */
 export function installCommands(
   slug: string,

@@ -68,7 +68,7 @@ export async function GET(
     // Not an AI element — fall through to the Gray-original branches.
   }
 
-  // 3) `toast` — removed from the shadcn v4 registry; rebuilt from local files.
+  // 3) `toast` — served from Gray local files.
   if (name === 'toast') {
     try {
       const [toast, toaster, useToast] = await Promise.all([

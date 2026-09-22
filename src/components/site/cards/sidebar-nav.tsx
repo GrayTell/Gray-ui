@@ -37,7 +37,7 @@ import {
 } from '@/components/ui/sidebar'
 
 /**
- * Exact port of shadcn/ui v4 homepage cards/sidebar-nav.tsx.
+ * Gray UI homepage card: sidebar-nav.
  */
 function SidebarSection({
   label,

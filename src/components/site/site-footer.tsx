@@ -1,7 +1,7 @@
 import { siteConfig } from '@/lib/site'
 
 /**
- * Exact port of shadcn/ui v4 components/site-footer.tsx,
+ * Gray UI site footer
  * credited to Graytell Labs.
  */
 export function SiteFooter() {

@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* shadcn/ui v4 site breakpoints — the interface copies them exactly. */
+  /* Site breakpoints. */
   --breakpoint-3xl: 1600px;
   --breakpoint-4xl: 2000px;
   --font-sans: var(--font-geist-sans);
@@ -34,7 +34,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  /* Gray UI keeps its monochrome chart ramp — shadcn's blue ramp replaced. */
+  /* Gray UI keeps its monochrome chart ramp — no blue ramp. */
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -159,7 +159,7 @@
   }
 }
 
-/* shadcn/ui v4 site utilities — ported verbatim. */
+/* Site utilities. */
 @utility border-grid {
   @apply border-border/50 dark:border-border;
 }

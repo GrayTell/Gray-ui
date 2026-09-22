@@ -18,7 +18,7 @@ import {
 } from '@/components/ui/item'
 
 /**
- * Exact port of shadcn/ui v4 homepage cards/dividend-income.tsx.
+ * Gray UI homepage card: dividend-income.
  */
 const HOLDINGS = [
   {
