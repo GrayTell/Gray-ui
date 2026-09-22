@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
-  <!-- Letsvan UI mark: ascending L + underline + spark -->
-  <rect x="7" y="3" width="6.5" height="16" rx="3.25" />
-  <rect x="7" y="12.5" width="14" height="6.5" rx="3.25" />
-  <rect x="4" y="23.5" width="24" height="5" rx="2.5" />
-  <path d="M25 1.5 L26.4 5.1 L30 6.5 L26.4 7.9 L25 11.5 L23.6 7.9 L20 6.5 L23.6 5.1 Z" />
-</svg>

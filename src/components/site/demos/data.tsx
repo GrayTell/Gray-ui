@@ -369,7 +369,7 @@ export function ToastDemo() {
       <Button
         size="sm"
         variant="outline"
-        onClick={() => toast({ title: 'Scheduled catch-up', description: 'Tomorrow at 9:00.', variant: 'outline' })}
+        onClick={() => toast({ title: 'Scheduled catch-up', description: 'Tomorrow at 9:00.', variant: 'default' })}
       >
         Outline
       </Button>

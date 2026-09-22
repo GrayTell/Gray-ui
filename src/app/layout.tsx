@@ -86,6 +86,12 @@ const jsonLd = {
       },
     },
     {
+      "@type": "Organization",
+      name: siteConfig.credit.org,
+      url: siteConfig.credit.orgUrl,
+      logo: `${siteConfig.url}/icon.svg`,
+    },
+    {
       "@type": "SoftwareApplication",
       name: siteConfig.name,
       applicationCategory: "DeveloperApplication",

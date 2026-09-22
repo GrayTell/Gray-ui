@@ -3,32 +3,20 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
 import { COMPONENTS } from "@/lib/component-registry";
 
-/** /sitemap.xml — every public route. */
+/**
+ * /sitemap.xml — every public route.
+ * `<priority>` and `<changefreq>` are deliberately omitted: Google ignores
+ * both, so the file stays minimal with only loc + accurate lastmod.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
   return [
-    {
-      url: siteConfig.url,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${siteConfig.url}/components`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteConfig.url}/docs`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
+    { url: siteConfig.url, lastModified: now },
+    { url: `${siteConfig.url}/components`, lastModified: now },
+    { url: `${siteConfig.url}/docs`, lastModified: now },
     ...COMPONENTS.map((component) => ({
       url: `${siteConfig.url}/components/${component.slug}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
+      lastModified: now,
     })),
   ];
 }

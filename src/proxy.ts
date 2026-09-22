@@ -21,6 +21,7 @@ const EXEMPT_PATTERNS = [
   /^\/_next(?:\/|$)/, // build assets (matcher also skips static/image)
   /^\/robots\.txt$/, // must be readable to declare the rules
   /^\/sitemap\.xml$/,
+  /^\/llms\.txt$/, // AI-crawler content guide — always open
   /^\/manifest\.webmanifest$/,
   /^\/icon\.svg$/,
   /^\/favicon\.ico$/,

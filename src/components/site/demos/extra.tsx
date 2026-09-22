@@ -73,7 +73,7 @@ export function LabelDemo() {
         <Label htmlFor="label-demo-public">Public repository</Label>
       </div>
       <div className="grid gap-2">
-        <Label disabled htmlFor="label-demo-key">
+        <Label htmlFor="label-demo-key" className="opacity-70">
           Legacy API key
         </Label>
         <Input id="label-demo-key" disabled placeholder="Deprecated" />
@@ -330,7 +330,10 @@ export function FieldDemo() {
   const invalid = email.length > 0 && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)
 
   return (
-    <Field className="w-full max-w-sm" invalid={invalid}>
+    <Field
+      className="w-full max-w-sm"
+      data-invalid={invalid || undefined}
+    >
       <FieldLabel htmlFor="field-demo-email">Work email</FieldLabel>
       <Input
         id="field-demo-email"

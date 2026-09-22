@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 import { COMPONENTS, getComponent, getNeighbours } from '@/lib/component-registry'
+import { siteConfig } from '@/lib/site'
 import { ComponentPreview } from '@/components/site/component-preview'
 import { ComponentInstall } from '@/components/site/component-install'
 import { Button } from '@/components/ui/button'
@@ -14,6 +15,36 @@ export function generateStaticParams() {
 }
 
 export const dynamicParams = false
+
+/**
+ * BreadcrumbList structured data — server-rendered into the initial HTML
+ * so crawlers never depend on JS to see it.
+ */
+function breadcrumbJsonLd(name: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: siteConfig.url,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Components',
+        item: `${siteConfig.url}/components`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name,
+      },
+    ],
+  }
+}
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>
@@ -46,6 +77,12 @@ export default async function ComponentPage(props: {
 
   return (
     <div className="flex scroll-mt-24 items-stretch pb-8 text-[1.05rem] sm:text-[15px] xl:w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd(entry.name)),
+        }}
+      />
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="h-(--top-spacing) shrink-0" />
         <div className="mx-auto flex w-full max-w-160 min-w-0 flex-1 flex-col gap-6 px-4 py-6 text-foreground md:px-0 lg:py-8 dark:text-foreground">

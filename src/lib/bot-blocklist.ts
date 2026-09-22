@@ -3,11 +3,16 @@
  *
  * READING is welcome: search engines (Googlebot, Bingbot, DuckDuckBot…),
  * link-preview unfurlers (Twitterbot, Slackbot, Discordbot,
- * facebookexternalhit, WhatsApp…), AI assistants that read on a user's behalf
- * (OAI-SearchBot, ChatGPT-User) and the shadcn CLI that installs components.
+ * facebookexternalhit, WhatsApp…), AI SEARCH CITABILITY crawlers —
+ * OAI-SearchBot (ChatGPT Search), Claude-SearchBot (Claude search),
+ * PerplexityBot (Perplexity answers) — ChatGPT-User, and the shadcn CLI.
+ * Blocking training crawlers does NOT affect search citability: GPTBot ≠
+ * OAI-SearchBot and ClaudeBot ≠ Claude-SearchBot, so the search bots below
+ * must never be added to this list.
  *
- * BLOCKED are bots that screenshot pages or copy content: AI-training
- * scrapers, screenshot-as-a-service crawlers and site rippers. Enforced with
+ * BLOCKED are bots that screenshot pages or copy content: AI-TRAINING
+ * scrapers (GPTBot, ClaudeBot, CCBot, Google-Extended…),
+ * screenshot-as-a-service crawlers and site rippers. Enforced with
  * real 403s in `src/proxy.ts` and mirrored into /robots.txt for well-behaved
  * bots.
  */
@@ -25,7 +30,8 @@ export const BLOCKED_BOT_TOKENS = [
   "Amazonbot", // Alexa / AI data
   "Applebot-Extended", // Apple AI training (plain Applebot stays welcome)
   "Meta-ExternalAgent", // Meta AI training (facebookexternalhit stays welcome)
-  "PerplexityBot", // copies page content into answers
+  // PerplexityBot is deliberately ALLOWED — it powers Perplexity answer
+  // citations (AI search visibility), not just training.
   "YouBot",
   "Diffbot",
   "omgili",

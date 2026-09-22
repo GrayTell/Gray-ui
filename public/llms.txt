@@ -1,0 +1,29 @@
+# Gray UI
+
+> Gray UI is a monochrome React component library in the shadcn/ui style: 110 copy-paste components — core UI primitives, dashboard cards and a full AI chat suite — installable through a shadcn-compatible registry with one CLI command.
+
+Gray UI is built by Graytell Labs. Every component is rendered live on the site, ships as plain React + Tailwind CSS source you own, and installs through the standard shadcn CLI from the Gray registry.
+
+## Pages
+
+- [Home](https://gray-ui.vercel.app/): project overview, quick install and highlights.
+- [Components](https://gray-ui.vercel.app/components): the full browsable catalog, grouped and searchable, with a live preview for every component.
+- [Docs](https://gray-ui.vercel.app/docs): installation, theming and registry reference.
+- [Component pages](https://gray-ui.vercel.app/components/button): one page per component (replace `button` with any slug) with a live demo and install command.
+
+## Registry
+
+- [Registry index](https://gray-ui.vercel.app/r/index.json): machine-readable index of every installable item.
+- [Per-component JSON](https://gray-ui.vercel.app/r/button.json): shadcn-CLI-compatible registry item (replace `button` with any slug).
+
+## Install
+
+- `npx shadcn@latest add https://gray-ui.vercel.app/r/shimmer.json` installs a component straight from the registry.
+- Namespaced install (`@gray/shimmer`) is available after adding the registry to `components.json`; see the docs page.
+
+## Key facts
+
+- 110 components: stock primitives, dashboard cards, AI chat elements.
+- Strict monochrome design system (zinc palette), dark mode included.
+- React 19, Next.js 16, Tailwind CSS 4, TypeScript.
+- MIT licensed; source code at https://github.com/GrayTell/Gray-ui
