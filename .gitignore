@@ -69,3 +69,5 @@ agent-ctx/
 db/custom.db
 worklog.md
 REFERENCE.md
+# Vendored upstream clone (local reference only, never committed)
+/shadcn-ui/

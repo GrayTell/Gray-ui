@@ -8,6 +8,7 @@ import { ArrowUpRight, Github, Moon, Plus, Search, Sun } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { siteConfig } from '@/lib/site'
 import { GrayLogo } from '@/components/site/logo'
 import { useAnchorNav } from '@/components/site/use-anchor-nav'
 
@@ -16,6 +17,7 @@ const NAV_LINKS = [
   { label: 'Components', href: '/components' },
   { label: 'Showcase', href: '/#showcase' },
   { label: 'Features', href: '/#features' },
+  { label: 'Original shadcn/ui', href: '/shadcn' },
 ]
 
 interface SiteHeaderProps {
@@ -104,9 +106,22 @@ export function SiteHeader({ onOpenSearch }: SiteHeaderProps) {
             <Search className="h-4 w-4" aria-hidden="true" />
           </Button>
 
+          {/* Our own deployed version of shadcn/ui */}
+          <a
+            href={siteConfig.url}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Open our deployed version of shadcn/ui at ${siteConfig.url.replace('https://', '')}`}
+            title="Our own deployed version of shadcn/ui"
+            className="hidden h-9 items-center gap-1.5 rounded-lg border border-border bg-background px-3 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground sm:flex"
+          >
+            Live site
+            <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+          </a>
+
           {/* GitHub stars */}
           <a
-            href="https://github.com/letsvan"
+            href="https://github.com/graytell"
             target="_blank"
             rel="noreferrer"
             aria-label="Gray UI on GitHub — 124k stars"
