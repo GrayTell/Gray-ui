@@ -334,7 +334,7 @@ export function SnippetDemo() {
             <SnippetCopyButton />
           </SnippetAddon>
         </Snippet>
-        <Snippet code="https://gray-ui.space-z.ai/r/button.json">
+        <Snippet code="https://gray-ui.vercel.app/r/button.json">
           <SnippetAddon align="inline-start">
             <SnippetText>URL</SnippetText>
           </SnippetAddon>
@@ -549,7 +549,7 @@ export function EnvironmentVariablesDemo() {
             </EnvironmentVariable>
             <EnvironmentVariable
               name="REGISTRY_ORIGIN"
-              value="https://gray-ui.space-z.ai"
+              value="https://gray-ui.vercel.app"
             >
               <div className="flex items-center gap-2">
                 <EnvironmentVariableName />
@@ -561,7 +561,7 @@ export function EnvironmentVariablesDemo() {
             </EnvironmentVariable>
             <EnvironmentVariable
               name="NEXT_PUBLIC_SITE_URL"
-              value="https://gray-ui.space-z.ai"
+              value="https://gray-ui.vercel.app"
             >
               <div className="flex items-center gap-2">
                 <EnvironmentVariableName />

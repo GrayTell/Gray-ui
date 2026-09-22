@@ -95,7 +95,7 @@ function aiMeta(slug: string): GrayItem {
   return item
 }
 
-/** Number of Gray Originals-style guard so slugs stay honest. */
+/** Guard so slugs stay honest. */
 const DEMOS: Record<string, ComponentType> = {
   shimmer: ShimmerDemo,
   conversation: ConversationDemo,
@@ -457,7 +457,7 @@ export function Demo() {
   return (
     <Commit>
       <CommitHash>a1b2c3d</CommitHash>
-      <CommitMessage>feat: add AI Elements</CommitMessage>
+      <CommitMessage>feat: add AI components</CommitMessage>
       <CommitMetadata author="graytell" time="2h ago" />
     </Commit>
   )

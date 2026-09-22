@@ -724,8 +724,8 @@ const PREVIEW_LOGS = [
 ]
 
 const PREVIEW_URLS: Record<PreviewPage, string> = {
-  components: 'https://gray-ui.space-z.ai/components',
-  docs: 'https://gray-ui.space-z.ai/docs',
+  components: 'https://gray-ui.vercel.app/components',
+  docs: 'https://gray-ui.vercel.app/docs',
 }
 
 function PreviewNavigationBar({

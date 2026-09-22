@@ -11,7 +11,7 @@
     "registryDependencies": [
       "accordion",
       "badge",
-      "https://gray-ui.space-z.ai/r/code-block.json"
+      "https://gray-ui.vercel.app/r/code-block.json"
     ],
     "files": [
       {
@@ -565,7 +565,7 @@
       "button",
       "card",
       "collapsible",
-      "https://gray-ui.space-z.ai/r/shimmer.json"
+      "https://gray-ui.vercel.app/r/shimmer.json"
     ],
     "files": [
       {
@@ -639,7 +639,7 @@
     ],
     "registryDependencies": [
       "collapsible",
-      "https://gray-ui.space-z.ai/r/shimmer.json"
+      "https://gray-ui.vercel.app/r/shimmer.json"
     ],
     "files": [
       {
@@ -661,7 +661,7 @@
     "registryDependencies": [
       "collapsible",
       "tabs",
-      "https://gray-ui.space-z.ai/r/tool.json"
+      "https://gray-ui.vercel.app/r/tool.json"
     ],
     "files": [
       {
@@ -876,7 +876,7 @@
     "registryDependencies": [
       "badge",
       "collapsible",
-      "https://gray-ui.space-z.ai/r/code-block.json"
+      "https://gray-ui.vercel.app/r/code-block.json"
     ],
     "files": [
       {

@@ -22,7 +22,7 @@ const REPORT_ROWS = [
 ]
 
 /**
- * Gray Original — a payout summary card with balance, fees and a
+ * A payout summary card with balance, fees and a
  * line-by-line breakdown behind one click (Dialog).
  */
 export function ClaimableBalance() {

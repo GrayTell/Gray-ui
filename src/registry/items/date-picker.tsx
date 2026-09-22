@@ -10,7 +10,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils'
 
 /**
- * Gray Original — a date picker composed from Popover + Calendar with an
+ * A date picker composed from Popover + Calendar with an
  * outline trigger. The selected date renders as `MMM d, yyyy`; the popover
  * closes on selection.
  */

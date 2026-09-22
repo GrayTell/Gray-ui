@@ -6,8 +6,7 @@ import { ThemeProvider } from "@/components/site/theme-provider";
 import { siteConfig } from "@/lib/site";
 
 /**
- * Fonts copied exactly from shadcn/ui v4 (apps/v4/lib/fonts.ts):
- * Geist for sans + heading, Geist Mono for code. Gray UI adds no other faces.
+ * Geist for sans + heading, Geist Mono for code. No other faces.
  */
 const fontSans = FontSans({
   subsets: ["latin"],

@@ -2,11 +2,11 @@
  * Gray registry metadata — client-safe (no fs, no server imports).
  *
  * Three sources make up the registry:
- *  1. STOCK_META  — 53 official shadcn new-york-v4 items vendored under
+ *  1. STOCK_META  — 53 core UI items under
  *     `src/registry/vendor/*.json` (content-stripped metadata only), plus the
  *     locally-rebuilt `toast` item (55 stock items total).
  *  2. EXCLUSIVE_ITEMS — 7 Gray originals living in `src/registry/items/`.
- *  3. AI_ELEMENTS_ITEMS — 48 Vercel AI Elements vendored under
+ *  3. AI_ELEMENTS_ITEMS — the AI component set under
  *     `src/registry/ai-elements/*.json` (full Vercel set, Gray-hosted).
  *  The public registry index therefore serves 55 + 7 + 48 = 110 items, while
  *  the component catalog (which folds date-picker into the stock list) shows 56+48.
@@ -160,10 +160,10 @@ stockEntries.push([TOAST_ITEM.name, TOAST_ITEM])
 export const STOCK_META: Record<string, GrayItem> = Object.fromEntries(stockEntries)
 
 /**
- * The 48 Vercel AI Elements (chain-of-thought, shimmer, conversation, …),
- * vendored verbatim from elements.ai-sdk.dev and served Gray-hosted.
+ * The AI component set (chain-of-thought, shimmer, conversation, …),
+ * served from the Gray registry.
  * Sources live in `src/registry/ai-elements/*.json`; the /r route reads them
- * at request time. Cross-registry deps are rewritten to gray-ui.space-z.ai.
+ * at request time. Cross-registry deps are rewritten to gray-ui.vercel.app.
  */
 export const AI_ELEMENTS_ITEMS: GrayItem[] = (
   aiElementsMetaJson as VendorMetaEntry[]
@@ -171,7 +171,7 @@ export const AI_ELEMENTS_ITEMS: GrayItem[] = (
 
 export const AI_ELEMENT_NAMES = AI_ELEMENTS_ITEMS.map((item) => item.name)
 
-/** Every item served by the registry — 55 stock + 7 originals + 48 AI Elements = 110. */
+/** Every item served by the registry — 110 items in total. */
 export const ALL_REGISTRY_ITEMS: GrayItem[] = [
   ...Object.values(STOCK_META),
   ...EXCLUSIVE_ITEMS,
@@ -186,7 +186,7 @@ export const DATE_PICKER: GrayItem = EXCLUSIVE_ITEMS.find(
   (item) => item.name === 'date-picker',
 ) as GrayItem
 
-/** Union lookup across all 110 items (stock, toast, originals, AI Elements). */
+/** Union lookup across all 110 items. */
 export function getRegistryItemMeta(slug: string): GrayItem | null {
   return (
     EXCLUSIVE_ITEMS.find((item) => item.name === slug) ??

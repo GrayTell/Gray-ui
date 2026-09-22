@@ -6,7 +6,7 @@ const NO_STORE = { 'Cache-Control': 'no-store' } as const
 
 /**
  * Registry index — shadcn-compatible listing of all 110 items (55 stock,
- * 7 Gray originals, 48 AI Elements; content-free — fetch each at /r/<name>.json).
+ * including the AI suite; content-free — fetch each at /r/<name>.json).
  */
 export async function GET(request: Request) {
   const homepage = new URL(request.url).origin

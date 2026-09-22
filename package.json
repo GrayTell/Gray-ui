@@ -5,7 +5,7 @@
   "description": "Gray UI — The Canvas for your Next Interface. 110 copy-paste React components (shadcn-style registry): stock shadcn/ui + Gray originals + all Vercel AI Elements, in a strict monochrome design system.",
   "author": "Graytell Labs (https://github.com/graytell)",
   "license": "MIT",
-  "homepage": "https://gray-ui.space-z.ai",
+  "homepage": "https://gray-ui.vercel.app",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/graytell/gray-ui.git"

@@ -283,7 +283,7 @@ export function ButtonGroupDemo() {
   )
 
   const copy = () => {
-    navigator.clipboard?.writeText('https://gray-ui.space-z.ai/docs').catch(() => {})
+    navigator.clipboard?.writeText('https://gray-ui.vercel.app/docs').catch(() => {})
     setCopied(true)
     if (copyTimeout.current) clearTimeout(copyTimeout.current)
     copyTimeout.current = setTimeout(() => setCopied(false), 1600)
@@ -306,7 +306,7 @@ export function ButtonGroupDemo() {
       </ButtonGroup>
       <ButtonGroup aria-label="Copy docs link">
         <ButtonGroupText className="bg-muted/50 font-normal text-muted-foreground">
-          gray-ui.space-z.ai/docs
+          gray-ui.vercel.app/docs
         </ButtonGroupText>
         <Button size="sm" variant="outline" onClick={copy} aria-label="Copy link">
           {copied ? (

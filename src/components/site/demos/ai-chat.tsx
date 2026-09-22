@@ -179,7 +179,7 @@ const CONVERSATION_MESSAGES: UIMessage[] = [
     parts: [
       {
         type: 'text',
-        text: 'Map a namespace to your registry endpoint:\n\n```json\n{\n  "@gray": "https://gray-ui.space-z.ai/r/{name}.json"\n}\n```\n\nFrom then on `npx shadcn add button` resolves against your own registry.',
+        text: 'Map a namespace to your registry endpoint:\n\n```json\n{\n  "@gray": "https://gray-ui.vercel.app/r/{name}.json"\n}\n```\n\nFrom then on `npx shadcn add button` resolves against your own registry.',
       },
     ],
   },
@@ -280,7 +280,7 @@ const CONTEXT_USAGE = {
   outputTokens: 5200,
   outputTokenDetails: { textTokens: 4000, reasoningTokens: 1200 },
   totalTokens: 148400,
-  // Read by the vendored Context rows via passthrough casts.
+  // Read by the Context rows via passthrough casts.
   reasoningTokens: 1200,
   cachedInputTokens: 8400,
 }
@@ -597,7 +597,7 @@ export function ChainOfThoughtDemo() {
         <ChainOfThoughtHeader>Comparing registry strategies</ChainOfThoughtHeader>
         <ChainOfThoughtContent>
           <ChainOfThoughtStep
-            description="48 vendored AI elements found"
+            description="48 AI components found"
             icon={SearchIcon}
             label="Scanned the components directory"
             status="complete"

@@ -19,7 +19,7 @@ import {
   registrySnippet,
   useRegistryOrigin,
 } from '@/lib/install-command'
-import { COMPONENT_COUNT } from '@/lib/component-registry'
+import { COMPONENT_COUNT, AI_COUNT } from '@/lib/component-registry'
 import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -40,7 +40,7 @@ const SECTIONS = [
   { id: 'introduction', label: 'Introduction', group: 'Getting Started' },
   { id: 'installation', label: 'Installation', group: 'Getting Started' },
   { id: 'registry', label: 'The Registry', group: 'Getting Started' },
-  { id: 'ai-elements', label: 'AI Elements', group: 'Getting Started' },
+  { id: 'ai', label: 'AI Components', group: 'Getting Started' },
   { id: 'cli', label: 'CLI Reference', group: 'Reference' },
   { id: 'theming', label: 'Theming', group: 'Reference' },
 ] as const
@@ -90,9 +90,9 @@ const POPULAR: { slug: string; note?: string }[] = [
   { slug: 'card' },
   { slug: 'chart' },
   { slug: 'date-picker' },
-  { slug: 'claimable-balance', note: 'original' },
-  { slug: 'shimmer', note: 'AI' },
-  { slug: 'chain-of-thought', note: 'AI' },
+  { slug: 'claimable-balance' },
+  { slug: 'shimmer' },
+  { slug: 'chain-of-thought' },
 ]
 
 /* ------------------------------------------------------------------ */
@@ -290,8 +290,8 @@ export function DocsPage() {
             <Section id="introduction" title="Introduction" kicker="Getting Started">
               <p className="text-base leading-relaxed text-muted-foreground">
                 <span className="font-semibold text-foreground">Gray UI</span> is a
-                shadcn/ui-style component registry — not an npm package. Every
-                component&apos;s source lands in your repo through the official{' '}
+                component registry — not an npm package. Every
+                component&apos;s source lands in your repo through the{' '}
                 <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[13px] text-foreground">
                   shadcn
                 </code>{' '}
@@ -303,7 +303,7 @@ export function DocsPage() {
                   {COMPONENT_COUNT} components
                 </Badge>
                 <Badge variant="outline" className="gap-1 rounded-full">
-                  7 originals
+                  {AI_COUNT} AI components
                 </Badge>
                 <Badge variant="outline" className="rounded-full">
                   React + Tailwind v4
@@ -472,21 +472,12 @@ export function DocsPage() {
               </p>
             </Section>
 
-            {/* ------------------------------------------ AI Elements */}
-            <Section id="ai-elements" title="AI Elements" kicker="Getting Started">
+            {/* ------------------------------------------ AI Components */}
+            <Section id="ai" title="AI Components" kicker="Getting Started">
               <p className="text-base leading-relaxed text-muted-foreground">
-                Gray UI ships the <span className="font-medium text-foreground">full Vercel AI Elements set</span>{' '}
-                — all 48 chat and agent components including{' '}
-                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[13px] text-foreground">shimmer</code>,{' '}
-                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[13px] text-foreground">chain-of-thought</code>,{' '}
-                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[13px] text-foreground">conversation</code>,{' '}
-                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[13px] text-foreground">prompt-input</code>,{' '}
-                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[13px] text-foreground">reasoning</code>,{' '}
-                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[13px] text-foreground">task</code>,{' '}
-                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[13px] text-foreground">tool</code>,{' '}
-                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[13px] text-foreground">web-preview</code> and{' '}
-                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[13px] text-foreground">persona</code> —
-                vendored and served from the Gray registry under the{' '}<code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[13px] text-foreground">@gray</code>{' '}alias.
+                Gray UI ships a <span className="font-medium text-foreground">full suite of AI chat and agent components</span>{' '}
+                — conversation, reasoning, chain-of-thought, shimmer, prompt-input, task, tool,
+                web-preview, persona and more — served from the Gray registry under the{' '}<code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[13px] text-foreground">@gray</code>{' '}alias.
               </p>
               <PackageManagerTabs
                 commands={namespaceCommands(
@@ -509,7 +500,7 @@ export function DocsPage() {
               <div className="flex items-start gap-2.5 rounded-xl border bg-muted/40 p-4 text-sm text-muted-foreground">
                 <Sparkles className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                 <p>
-                  <span className="font-medium text-foreground">Heads up:</span> AI Elements pull
+                  <span className="font-medium text-foreground">Heads up:</span> The AI components pull
                   their own npm deps (<code className="font-mono text-[13px] text-foreground">ai</code>,{' '}
                   <code className="font-mono text-[13px] text-foreground">streamdown</code>,{' '}
                   <code className="font-mono text-[13px] text-foreground">motion</code>,{' '}
@@ -521,9 +512,9 @@ export function DocsPage() {
                 </p>
               </div>
               <p className="text-sm text-muted-foreground">
-                All 48 live previews are in the{' '}
-                <Link href="/components#shimmer" className="font-medium text-foreground underline underline-offset-4 hover:no-underline">
-                  AI Elements category
+                All live previews are in the{' '}
+                <Link href="/components/shimmer" className="font-medium text-foreground underline underline-offset-4 hover:no-underline">
+                  AI category
                 </Link>{' '}on the components page.
               </p>
             </Section>
@@ -531,10 +522,10 @@ export function DocsPage() {
             {/* ------------------------------------------ CLI */}
             <Section id="cli" title="CLI Reference" kicker="Reference">
               <p className="text-base leading-relaxed text-muted-foreground">
-                Gray UI rides the official shadcn CLI — no custom tooling to install.
+                Gray UI rides the shadcn CLI — no custom tooling to install.
               </p>
               <div className="divide-y rounded-xl border px-4">
-                <CmdRow cmd="npx shadcn@latest init" note="Initialize shadcn/ui in your project" />
+                <CmdRow cmd="npx shadcn@latest init" note="Initialize the project setup" />
                 <CmdRow cmd="npx shadcn@latest add @gray/button" note="Install by registry alias" />
                 <CmdRow
                   cmd={`npx shadcn@latest add "${registryItemUrl('button', origin)}"`}
@@ -584,7 +575,7 @@ export function DocsPage() {
                   </p>
                   <p className="mt-1 max-w-md text-sm text-muted-foreground">
                     All {COMPONENT_COUNT} components with live previews, usage code and
-                    one-line install commands — 7 of them Gray originals.
+                    one-line install commands — including the full AI suite.
                   </p>
                 </div>
                 <Button asChild>

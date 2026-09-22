@@ -77,9 +77,9 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
   /** Scroll on the homepage, or navigate home first from another page. */
   const goAnchor = (id: string) => runAndClose(() => anchorNav(id))
 
-  /** Deep-link into the /components explorer. */
+  /** Navigate to a component page. */
   const goComponent = (slug: string) =>
-    runAndClose(() => router.push(`/components#${slug}`))
+    runAndClose(() => router.push(`/components/${slug}`))
 
   /** Deep-link into the docs. */
   const goDocs = (anchor?: string) =>

@@ -13,7 +13,7 @@ const fmt = (n: number) =>
   }).format(n)
 
 /**
- * Gray Original — savings goals with draggable sliders and live progress
+ * Savings goals with draggable sliders and live progress
  * math. Percentages, remaining amounts and currency formatting update in
  * real time as you drag.
  */

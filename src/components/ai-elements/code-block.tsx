@@ -1,6 +1,6 @@
 "use client";
 
-/* eslint-disable react-hooks/refs -- vendored Vercel AI Elements source; upstream pattern is intentional */
+/* eslint-disable react-hooks/refs -- intentional pattern */
 
 import { Button } from "@/components/ui/button";
 import {

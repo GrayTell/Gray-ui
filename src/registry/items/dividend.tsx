@@ -4,7 +4,7 @@ import * as React from 'react'
 import { Check } from 'lucide-react'
 
 /**
- * Gray Original — dividend income estimator with multi-select holdings.
+ * Dividend income estimator with multi-select holdings.
  * Toggle positions to watch the estimated quarterly payout update instantly.
  */
 export function DividendCard() {

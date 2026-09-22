@@ -1,6 +1,6 @@
 "use client";
 
-/* eslint-disable react-hooks/immutability -- vendored Vercel AI Elements source; upstream pattern is intentional */
+/* eslint-disable react-hooks/immutability -- intentional pattern */
 
 import { cn } from "@/lib/utils";
 import type { RiveParameters } from "@rive-app/react-webgl2";

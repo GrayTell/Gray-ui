@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server'
 
 import { EXCLUSIVE_ITEMS, TOAST_ITEM } from '@/lib/registry'
 
-const REGISTRY_ORIGIN = 'https://gray-ui.space-z.ai'
+const REGISTRY_ORIGIN = 'https://gray-ui.vercel.app'
 const NO_STORE = { 'Cache-Control': 'no-store' } as const
 
 function notFound() {
@@ -45,7 +45,7 @@ export async function GET(
   const name = sanitizeName(rawName)
   if (!name) return notFound()
 
-  // 1) Stock shadcn item vendored as a complete registry JSON (with content).
+  // 1) Item with a complete registry JSON (with content).
   //    `toast` is intentionally skipped — it is not in the v4 registry and is
   //    rebuilt from local sources below.
   if (name !== 'toast') {
@@ -54,11 +54,11 @@ export async function GET(
       const item = JSON.parse(raw) as Record<string, unknown>
       return NextResponse.json(withGrayMeta(item), { headers: NO_STORE })
     } catch {
-      // Not vendored — fall through to the Gray-original branches.
+      // No complete JSON — fall through to the generated-item branches.
     }
   }
 
-  // 2) Vercel AI Elements — 48 items vendored verbatim under
+  // 2) AI components — served under
   //    src/registry/ai-elements/*.json (cross-registry deps rewritten to Gray).
   try {
     const raw = await readProjectFile('src', 'registry', 'ai-elements', `${name}.json`)

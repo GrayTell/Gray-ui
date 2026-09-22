@@ -100,7 +100,7 @@ export default async function OpengraphImage() {
             by Graytell Labs 2026
           </span>
           <span style={{ display: "flex", color: "#52525b" }}>·</span>
-          <span style={{ display: "flex", color: "#71717a" }}>gray-ui.space-z.ai</span>
+          <span style={{ display: "flex", color: "#71717a" }}>gray-ui.vercel.app</span>
         </div>
       </div>
     ),

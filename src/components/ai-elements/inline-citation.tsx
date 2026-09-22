@@ -1,6 +1,6 @@
 "use client";
 
-/* eslint-disable react-hooks/set-state-in-effect -- vendored Vercel AI Elements source; upstream pattern is intentional */
+/* eslint-disable react-hooks/set-state-in-effect -- intentional pattern */
 
 import { Badge } from "@/components/ui/badge";
 import type { CarouselApi } from "@/components/ui/carousel";

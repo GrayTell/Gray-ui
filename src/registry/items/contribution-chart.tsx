@@ -3,7 +3,7 @@
 import * as React from 'react'
 
 /**
- * Gray Original — GitHub-style contribution bar chart with 6-month and
+ * GitHub-style contribution bar chart with 6-month and
  * 1-year periods. Hover or focus any bar for a tooltip with the exact count.
  */
 export function ContributionChart() {

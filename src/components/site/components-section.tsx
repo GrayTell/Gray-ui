@@ -3,14 +3,13 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, Check, Copy, Sparkles } from 'lucide-react'
+import { ArrowRight, Check, Copy } from 'lucide-react'
 
 import { useToast } from '@/hooks/use-toast'
 import { cn } from '@/lib/utils'
-import { COMPONENT_COUNT, ORIGINAL_COUNT } from '@/lib/component-registry'
+import { COMPONENT_COUNT } from '@/lib/component-registry'
 import { registryCommands, useRegistryOrigin } from '@/lib/install-command'
 import { ClaimableBalance } from '@/registry/items/claimable-balance'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { CodeBlock } from '@/components/site/code-block'
 
@@ -53,7 +52,7 @@ const FEATURED: DemoEntry[] = [
   {
     name: 'Claimable Balance',
     slug: 'claimable-balance',
-    category: 'Originals',
+    category: 'Data',
     Component: ClaimableBalanceDemo,
   },
 ]
@@ -142,24 +141,14 @@ export function ComponentsSection() {
             >
               <div className="flex items-center justify-between gap-2 border-b border-border/70 px-4 py-2.5">
                 <Link
-                  href={`/components#${demo.slug}`}
+                  href={`/components/${demo.slug}`}
                   className="group flex min-w-0 items-center gap-2"
                   aria-label={`Open ${demo.name} in the full component library`}
                 >
                   <h3 className="truncate text-sm font-medium">{demo.name}</h3>
-                  {demo.category === 'Originals' ? (
-                    <Badge
-                      variant="outline"
-                      className="hidden gap-1 rounded-full px-2 py-0 text-[10px] font-medium text-foreground sm:inline-flex"
-                    >
-                      <Sparkles className="h-2.5 w-2.5" aria-hidden="true" />
-                      Original
-                    </Badge>
-                  ) : (
-                    <span className="hidden rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground sm:inline">
-                      {demo.category}
-                    </span>
-                  )}
+                  <span className="hidden rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground sm:inline">
+                    {demo.category}
+                  </span>
                   <ArrowRight
                     className="h-3.5 w-3.5 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100"
                     aria-hidden="true"
@@ -195,7 +184,7 @@ export function ComponentsSection() {
         >
           <div>
             <p className="text-lg font-semibold tracking-tight">
-              All {COMPONENT_COUNT} components — {ORIGINAL_COUNT} Gray originals
+              All {COMPONENT_COUNT} components, including a full AI chat suite
             </p>
             <p className="mt-1 text-sm text-muted-foreground">
               The full catalog lives at{' '}

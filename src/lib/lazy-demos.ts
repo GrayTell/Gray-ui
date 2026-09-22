@@ -1,5 +1,5 @@
 /**
- * Lazy wrappers for the stock shadcn demo batches.
+ * Lazy wrappers for the demo batches.
  *
  * The /components explorer renders ONE demo at a time, but statically
  * importing every demo file pulls all 54 components into the page graph.

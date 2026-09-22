@@ -42,7 +42,7 @@ function NavRow({
 }
 
 /**
- * Gray Original — two independent settings navigation lists (Overview /
+ * Two independent settings navigation lists (Overview /
  * Account) with selectable rows. A drop-in navigation pattern for settings
  * pages, fully keyboard accessible via `aria-pressed`.
  */

@@ -2,7 +2,7 @@ export const MANAGERS = ['npm', 'pnpm', 'yarn', 'bun'] as const
 export type PackageManager = (typeof MANAGERS)[number]
 
 /** Production origin of the Gray registry. */
-export const DEFAULT_REGISTRY_ORIGIN = 'https://gray-ui.space-z.ai'
+export const DEFAULT_REGISTRY_ORIGIN = 'https://gray-ui.vercel.app'
 
 /** URL of a single registry item, e.g. `${origin}/r/button.json`. */
 export function registryItemUrl(slug: string, origin: string = DEFAULT_REGISTRY_ORIGIN): string {

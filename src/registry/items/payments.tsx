@@ -11,7 +11,7 @@ import {
 import { Switch } from '@/components/ui/switch'
 
 /**
- * Gray Original — payment settings panel with collapsible action rows and
+ * Payment settings panel with collapsible action rows and
  * working switches, plus a breadcrumb header for nested-page contexts.
  */
 export function PaymentsCard() {
