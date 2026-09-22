@@ -1,6 +1,6 @@
 /**
- * AI Elements catalog entries — the full 48-component Vercel AI Elements set,
- * vendored and Gray-hosted. Descriptions come from the registry metadata
+ * AI catalog entries — chat, agent and reasoning UI components.
+ * Descriptions come from the registry metadata
  * (src/registry/ai-elements-meta.json) so the catalog and the /r registry
  * never drift. Demos live in src/components/site/demos/ai-{chat,code,media}.
  */
@@ -560,7 +560,7 @@ export function Demo() {
 
 export function Demo() {
   return (
-    <WebPreview defaultUrl="https://gray-ui.space-z.ai">
+    <WebPreview defaultUrl="https://gray-ui.vercel.app">
       <WebPreviewNavigation />
       <WebPreviewUrl />
       <WebPreviewBody>{iframe}</WebPreviewBody>
@@ -644,7 +644,7 @@ export function Demo() {
 }`,
 }
 
-/** All 48 AI Elements as catalog entries — category "AI Elements". */
+/** AI catalog entries — category "AI". */
 export const AI_ENTRIES: ComponentEntry[] = AI_ELEMENTS_ITEMS.map((meta) => {
   const slug = meta.name
   const Demo = DEMOS[slug]
@@ -656,14 +656,14 @@ export const AI_ENTRIES: ComponentEntry[] = AI_ELEMENTS_ITEMS.map((meta) => {
   return {
     slug,
     name: title,
-    category: 'AI Elements',
+    category: 'AI',
     description: aiMeta(slug).description,
     Demo,
     code: USAGE[slug] ?? `import { ${title.replace(/\s+/g, '')} } from "@/components/ai-elements/${slug}"\n\nexport function Demo() {\n  return <${title.replace(/\s+/g, '')} />\n}`,
   }
 })
 
-/** Marquee elements worth surfacing first inside the AI Elements group. */
+/** Marquee elements worth surfacing first inside the AI group. */
 export const AI_ENTRY_ORDER: string[] = [
   'shimmer',
   'chain-of-thought',

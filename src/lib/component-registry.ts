@@ -66,8 +66,7 @@ import {
 } from '@/lib/lazy-demos'
 
 export type ComponentCategory =
-  | 'Originals'
-  | 'AI Elements'
+  | 'AI'
   | 'Controls'
   | 'Inputs'
   | 'Overlays'
@@ -89,8 +88,7 @@ export interface ComponentEntry {
 }
 
 export const CATEGORY_ORDER: ComponentCategory[] = [
-  'Originals',
-  'AI Elements',
+  'AI',
   'Controls',
   'Inputs',
   'Overlays',
@@ -99,14 +97,23 @@ export const CATEGORY_ORDER: ComponentCategory[] = [
   'Data',
 ]
 
-/* ------------------------------ Originals ------------------------------- */
+/** Recently added components — surfaced in the "New Components" grid. */
+export const NEW_COMPONENTS = [
+  'shimmer',
+  'chain-of-thought',
+  'conversation',
+  'prompt-input',
+  'date-picker',
+]
+
+/* --------------------------- Signature cards ---------------------------- */
 
 /**
- * Demo wrapper for a Gray original: centers the self-contained card at a
- * sensible max-width so it sits nicely in the preview grid.
+ * Demo wrapper: centers the self-contained card at a sensible max-width so
+ * it sits nicely in the preview grid.
  * (Uses createElement — this module is a .ts file, no JSX.)
  */
-function originalDemo(Comp: ComponentType, width: string, name: string): ComponentType {
+function centeredDemo(Comp: ComponentType, width: string, name: string): ComponentType {
   const Demo = () =>
     createElement(
       'div',
@@ -117,14 +124,14 @@ function originalDemo(Comp: ComponentType, width: string, name: string): Compone
   return Demo
 }
 
-const ORIGINALS: ComponentEntry[] = [
+const FEATURED: ComponentEntry[] = [
   {
     slug: 'claimable-balance',
     name: 'Claimable Balance',
-    category: 'Originals',
+    category: 'Data',
     description:
       'A payout summary card with balance, fees and a full line-by-line report behind one click. Built on Card-style layout, Badge and Dialog.',
-    Demo: originalDemo(ClaimableBalance, 'max-w-sm', 'ClaimableBalance'),
+    Demo: centeredDemo(ClaimableBalance, 'max-w-sm', 'ClaimableBalance'),
     code: `import { ClaimableBalance } from "@/components/gray/claimable-balance"
 
 export function Demo() {
@@ -134,10 +141,10 @@ export function Demo() {
   {
     slug: 'contribution-chart',
     name: 'Contribution Chart',
-    category: 'Originals',
+    category: 'Data',
     description:
       'GitHub-style contribution bar chart with 6-month and 1-year periods. Hover or focus any bar for a tooltip with the exact count.',
-    Demo: originalDemo(ContributionChart, 'max-w-xl', 'ContributionChart'),
+    Demo: centeredDemo(ContributionChart, 'max-w-xl', 'ContributionChart'),
     code: `import { ContributionChart } from "@/components/gray/contribution-chart"
 
 export function Demo() {
@@ -147,10 +154,10 @@ export function Demo() {
   {
     slug: 'savings-targets',
     name: 'Savings Targets',
-    category: 'Originals',
+    category: 'Data',
     description:
       'Savings goals with draggable sliders and live progress math — percentages, remaining amounts and currency formatting update in real time.',
-    Demo: originalDemo(SavingsTargets, 'max-w-md', 'SavingsTargets'),
+    Demo: centeredDemo(SavingsTargets, 'max-w-md', 'SavingsTargets'),
     code: `import { SavingsTargets } from "@/components/gray/savings-targets"
 
 export function Demo() {
@@ -160,10 +167,10 @@ export function Demo() {
   {
     slug: 'dividend',
     name: 'Dividend',
-    category: 'Originals',
+    category: 'Data',
     description:
       'Dividend income estimator with multi-select holdings. Toggle positions to watch the estimated quarterly payout update instantly.',
-    Demo: originalDemo(DividendCard, 'max-w-md', 'DividendCard'),
+    Demo: centeredDemo(DividendCard, 'max-w-md', 'DividendCard'),
     code: `import { DividendCard } from "@/components/gray/dividend"
 
 export function Demo() {
@@ -173,10 +180,10 @@ export function Demo() {
   {
     slug: 'payments',
     name: 'Payments',
-    category: 'Originals',
+    category: 'Data',
     description:
       'Payment settings panel with collapsible action rows and working switches, plus a breadcrumb header for nested-page contexts.',
-    Demo: originalDemo(PaymentsCard, 'max-w-xl', 'PaymentsCard'),
+    Demo: centeredDemo(PaymentsCard, 'max-w-xl', 'PaymentsCard'),
     code: `import { PaymentsCard } from "@/components/gray/payments"
 
 export function Demo() {
@@ -186,10 +193,10 @@ export function Demo() {
   {
     slug: 'settings-nav',
     name: 'Settings Nav',
-    category: 'Originals',
+    category: 'Navigation',
     description:
       'Two independent settings navigation lists with selectable rows. A drop-in, keyboard-accessible pattern for settings pages.',
-    Demo: originalDemo(SettingsNav, 'max-w-md', 'SettingsNav'),
+    Demo: centeredDemo(SettingsNav, 'max-w-md', 'SettingsNav'),
     code: `import { SettingsNav } from "@/components/gray/settings-nav"
 
 export function Demo() {
@@ -199,10 +206,10 @@ export function Demo() {
   {
     slug: 'date-picker',
     name: 'Date Picker',
-    category: 'Originals',
+    category: 'Inputs',
     description:
       'A date picker composed from Popover and Calendar with an outline trigger. The selected date renders as MMM d, yyyy and the popover closes on selection.',
-    Demo: originalDemo(DatePicker, 'max-w-xs', 'DatePicker'),
+    Demo: centeredDemo(DatePicker, 'max-w-xs', 'DatePicker'),
     code: `import { DatePicker } from "@/components/gray/date-picker"
 
 export function Demo() {
@@ -212,10 +219,10 @@ export function Demo() {
 ]
 
 export const COMPONENTS: ComponentEntry[] = [
-  ...ORIGINALS,
-
-  /* ----------------------------- AI Elements ----------------------------- */
+  /* --------------------------------- AI ---------------------------------- */
   ...AI_ENTRIES_SORTED,
+
+  ...FEATURED,
 
   /* ------------------------------- Controls ------------------------------ */
   {
@@ -1359,10 +1366,8 @@ export function Demo() {
 
 export const COMPONENT_COUNT = COMPONENTS.length
 
-/** Number of Gray Originals in the catalog. */
-export const ORIGINAL_COUNT = COMPONENTS.filter(
-  (c) => c.category === 'Originals'
-).length
+/** Number of AI components in the catalog. */
+export const AI_COUNT = COMPONENTS.filter((c) => c.category === 'AI').length
 
 export function getComponent(slug: string): ComponentEntry | undefined {
   return COMPONENTS.find((c) => c.slug === slug)

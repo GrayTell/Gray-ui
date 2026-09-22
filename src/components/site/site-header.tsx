@@ -13,14 +13,13 @@ import { ModeSwitcher } from '@/components/site/mode-switcher'
 import { SearchTrigger } from '@/components/site/search-trigger'
 
 /**
- * Exact port of shadcn/ui v4 components/site-header.tsx.
- * Client component so both server pages and client pages
- * (docs, components explorer) can render it.
+ * Site header. Client component so both server pages and
+ * client pages (docs, components explorer) can render it.
  */
 const NAV_ITEMS = [
   { href: '/', label: 'Home' },
   { href: '/docs', label: 'Docs' },
-  { href: '/docs#registry', label: 'Components' },
+  { href: '/components', label: 'Components' },
 ]
 
 export function SiteHeader() {
