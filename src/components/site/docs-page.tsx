@@ -29,7 +29,6 @@ import {
   PackageManagerTabs,
   type PackageManager,
 } from '@/components/site/package-manager-tabs'
-import { CommandMenu } from '@/components/site/command-menu'
 import { SiteHeader } from '@/components/site/site-header'
 import { SiteFooter } from '@/components/site/site-footer'
 
@@ -170,7 +169,6 @@ function CmdRow({ cmd, note }: { cmd: string; note: string }) {
 export function DocsPage() {
   const origin = useRegistryOrigin()
   const [manager, setManager] = React.useState<PackageManager>('npm')
-  const [searchOpen, setSearchOpen] = React.useState(false)
   const [active, setActive] = React.useState<SectionId>('introduction')
   const mainRef = React.useRef<HTMLDivElement | null>(null)
 
@@ -251,8 +249,7 @@ export function DocsPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
-      <CommandMenu open={searchOpen} onOpenChange={setSearchOpen} />
-      <SiteHeader onOpenSearch={() => setSearchOpen(true)} />
+      <SiteHeader />
 
       <div className="mx-auto flex w-full max-w-7xl flex-1 items-stretch px-4 sm:px-6">
         {/* Sidebar (desktop) */}

@@ -1,63 +1,44 @@
-'use client'
+import { siteConfig } from '@/lib/site'
 
-import Link from 'next/link'
-import { Github } from 'lucide-react'
-
-import { useAnchorNav } from '@/components/site/use-anchor-nav'
-
+/**
+ * Exact port of shadcn/ui v4 components/site-footer.tsx,
+ * credited to Graytell Labs.
+ */
 export function SiteFooter() {
-  const anchorNav = useAnchorNav()
-
   return (
-    <footer className="mt-auto border-t border-border/60 bg-background">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-8 pb-[max(2rem,env(safe-area-inset-bottom))] sm:flex-row sm:px-6">
-        <p className="text-center text-sm text-muted-foreground sm:text-left">
-          Created by{' '}
-          <a
-            href="https://github.com/graytell"
-            target="_blank"
-            rel="noreferrer"
-            className="font-medium text-foreground underline-offset-4 hover:underline"
-          >
-            Graytell Labs
-          </a>{' '}
-          2026. Visit{' '}
-          <a
-            href="https://github.com/graytell"
-            target="_blank"
-            rel="noreferrer"
-            className="font-medium text-foreground underline-offset-4 hover:underline"
-          >
-            github.com/graytell
-          </a>{' '}
-          for more info and our other products.
-        </p>
-        <div className="flex items-center gap-4">
-          <Link
-            href="/#installation"
-            onClick={(e) => {
-              e.preventDefault()
-              anchorNav('installation')
-            }}
-            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Docs
-          </Link>
-          <Link
-            href="/components"
-            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Components
-          </Link>
-          <a
-            href="https://github.com/graytell"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Gray UI on GitHub"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <Github className="h-4 w-4" aria-hidden="true" />
-          </a>
+    <footer className="mt-auto">
+      <div className="container-wrapper px-4 xl:px-6">
+        <div className="flex h-(--footer-height) items-center justify-between">
+          <div className="text-muted-foreground w-full px-1 text-center text-xs leading-loose sm:text-sm">
+            Built by{' '}
+            <a
+              href={siteConfig.author.url}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium underline underline-offset-4"
+            >
+              Graytell Labs
+            </a>{' '}
+            at{' '}
+            <a
+              href={siteConfig.links.org}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium underline underline-offset-4"
+            >
+              Graytell
+            </a>
+            . The source code is available on{' '}
+            <a
+              href={siteConfig.links.github}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium underline underline-offset-4"
+            >
+              GitHub
+            </a>
+            .
+          </div>
         </div>
       </div>
     </footer>

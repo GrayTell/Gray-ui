@@ -1,23 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
+import { Geist as FontSans, Geist_Mono as FontMono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/site/theme-provider";
 import { siteConfig } from "@/lib/site";
 
 /**
- * Satoshi is the only typeface Gray UI loads (400/500/700/900, Fontshare).
- * Code blocks fall back to the system monospace stack — no Geist, no Google Fonts.
+ * Fonts copied exactly from shadcn/ui v4 (apps/v4/lib/fonts.ts):
+ * Geist for sans + heading, Geist Mono for code. Gray UI adds no other faces.
  */
-const satoshi = localFont({
-  src: [
-    { path: "../../public/fonts/satoshi-400.woff2", weight: "400", style: "normal" },
-    { path: "../../public/fonts/satoshi-500.woff2", weight: "500", style: "normal" },
-    { path: "../../public/fonts/satoshi-700.woff2", weight: "700", style: "normal" },
-    { path: "../../public/fonts/satoshi-900.woff2", weight: "900", style: "normal" },
-  ],
-  variable: "--font-satoshi",
-  display: "swap",
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+});
+
+const fontMono = FontMono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  weight: ["400"],
 });
 
 const title = `${siteConfig.name} — ${siteConfig.tagline}`;
@@ -50,7 +50,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    // Read yes, archived copies no — mirrors the bot policy (src/proxy.ts).
     noarchive: true,
     googleBot: {
       index: true,
@@ -109,10 +108,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${satoshi.variable} antialiased bg-background text-foreground`}
-      >
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${fontSans.variable} ${fontMono.variable} [--header-height:calc(var(--spacing)*14)] lg:[--header-height:calc(var(--spacing)*16)]`}
+    >
+      <body className="antialiased overscroll-none [--footer-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

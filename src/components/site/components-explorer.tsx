@@ -43,7 +43,6 @@ import {
 import { CodeBlock } from '@/components/site/code-block'
 import { SiteHeader } from '@/components/site/site-header'
 import { SiteFooter } from '@/components/site/site-footer'
-import { CommandMenu } from '@/components/site/command-menu'
 import { Badge } from '@/components/ui/badge'
 import {
   Collapsible,
@@ -118,7 +117,6 @@ function SidebarNav({
 export function ComponentsExplorer() {
   const { toast } = useToast()
   const origin = useRegistryOrigin()
-  const [searchOpen, setSearchOpen] = React.useState(false)
   const [selected, setSelected] = React.useState<string>('button')
   const [view, setView] = React.useState<'preview' | 'code'>('preview')
   const [manager, setManager] = React.useState<PackageManager>('npm')
@@ -170,8 +168,7 @@ export function ComponentsExplorer() {
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
-      <CommandMenu open={searchOpen} onOpenChange={setSearchOpen} />
-      <SiteHeader onOpenSearch={() => setSearchOpen(true)} />
+      <SiteHeader />
 
       <div className="mx-auto flex w-full max-w-7xl flex-1 items-stretch px-4 sm:px-6">
         {/* Sidebar (desktop) */}
