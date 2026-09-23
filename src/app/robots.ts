@@ -15,6 +15,5 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: [...BLOCKED_BOT_TOKENS], disallow: "/" },
     ],
     sitemap: `${siteConfig.url}/sitemap.xml`,
-    host: siteConfig.url,
   };
 }

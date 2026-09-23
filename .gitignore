@@ -71,3 +71,5 @@ worklog.md
 REFERENCE.md
 # Vendored upstream clone (local reference only, never committed)
 /shadcn-ui/
+# Local credentials file (tokens) — never committed
+credentials.md
