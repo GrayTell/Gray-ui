@@ -32,6 +32,9 @@ export const metadata: Metadata = {
   applicationName: siteConfig.name,
   category: "technology",
   alternates: { canonical: "/" },
+  verification: {
+    google: "KLyXH6C8KGrTWqUvu5bZyytZ7AXz8L9HUQr2bWSB-yY",
+  },
   openGraph: {
     type: "website",
     url: "/",
