@@ -1,6 +1,6 @@
 # Gray UI
 
-> Gray UI is a monochrome React component library in the shadcn/ui style: 110 copy-paste components — core UI primitives, dashboard cards and a full AI chat suite — installable through a shadcn-compatible registry with one CLI command.
+> Gray UI is a monochrome React component library in the shadcn/ui style: 157 copy-paste components — core UI primitives, dashboard cards, a full AI chat suite and a 47-piece loader set — installable through a shadcn-compatible registry with one CLI command.
 
 Gray UI is built by Graytell Labs. Every component is rendered live on the site, ships as plain React + Tailwind CSS source you own, and installs through the standard shadcn CLI from the Gray registry.
 
@@ -23,7 +23,7 @@ Gray UI is built by Graytell Labs. Every component is rendered live on the site,
 
 ## Key facts
 
-- 110 components: stock primitives, dashboard cards, AI chat elements.
+- 157 components: stock primitives, dashboard cards, AI chat elements and loading animations.
 - Strict monochrome design system (zinc palette), dark mode included.
 - React 19, Next.js 16, Tailwind CSS 4, TypeScript.
 - MIT licensed; source code at https://github.com/GrayTell/Gray-ui

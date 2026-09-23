@@ -3,7 +3,7 @@ import path from 'path'
 
 import { NextResponse } from 'next/server'
 
-import { EXCLUSIVE_ITEMS, TOAST_ITEM } from '@/lib/registry'
+import { ALL_REGISTRY_ITEMS, EXCLUSIVE_ITEMS, LOADING_ITEMS, TOAST_ITEM } from '@/lib/registry'
 
 const REGISTRY_ORIGIN = 'https://gray-ui.vercel.app'
 const NO_STORE = { 'Cache-Control': 'no-store' } as const
@@ -44,6 +44,31 @@ export async function GET(
   const { name: rawName } = await params
   const name = sanitizeName(rawName)
   if (!name) return notFound()
+
+  // 0) `index` — the registry index (same payload as /r), reachable at the
+  //    conventional /r/index.json URL.
+  if (name === 'index') {
+    const homepage = REGISTRY_ORIGIN
+    return NextResponse.json(
+      {
+        $schema: 'https://ui.shadcn.com/schema/registry.json',
+        name: 'gray',
+        homepage,
+        items: ALL_REGISTRY_ITEMS.map(
+          ({ name, type, title, description, dependencies, registryDependencies, files }) => ({
+            name,
+            type,
+            title,
+            description,
+            dependencies,
+            registryDependencies,
+            files,
+          }),
+        ),
+      },
+      { headers: NO_STORE },
+    )
+  }
 
   // 1) Item with a complete registry JSON (with content).
   //    `toast` is intentionally skipped — it is not in the v4 registry and is
@@ -90,15 +115,17 @@ export async function GET(
     }
   }
 
-  // 4) Gray originals — metadata from EXCLUSIVE_ITEMS, content read from
-  //    src/registry/items/<name>.tsx at request time.
-  const exclusive = EXCLUSIVE_ITEMS.find((item) => item.name === name)
-  if (exclusive) {
+  // 4) Gray originals + loader suite — metadata from the item lists, content
+  //    read from src/registry/items/<name>.tsx at request time.
+  const grayItem = [...EXCLUSIVE_ITEMS, ...LOADING_ITEMS].find(
+    (item) => item.name === name,
+  )
+  if (grayItem) {
     try {
       const content = await readProjectFile('src', 'registry', 'items', `${name}.tsx`)
       const item = {
-        ...exclusive,
-        files: exclusive.files.map((file) => ({ ...file, content })),
+        ...grayItem,
+        files: grayItem.files.map((file) => ({ ...file, content })),
       }
       return NextResponse.json(withGrayMeta(item), { headers: NO_STORE })
     } catch {

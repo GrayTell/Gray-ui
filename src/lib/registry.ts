@@ -1,15 +1,17 @@
 /**
  * Gray registry metadata — client-safe (no fs, no server imports).
  *
- * Three sources make up the registry:
+ * Four sources make up the registry:
  *  1. STOCK_META  — 53 core UI items under
  *     `src/registry/vendor/*.json` (content-stripped metadata only), plus the
  *     locally-rebuilt `toast` item (55 stock items total).
  *  2. EXCLUSIVE_ITEMS — 7 Gray originals living in `src/registry/items/`.
  *  3. AI_ELEMENTS_ITEMS — the AI component set under
  *     `src/registry/ai-elements/*.json` (full Vercel set, Gray-hosted).
- *  The public registry index therefore serves 55 + 7 + 48 = 110 items, while
- *  the component catalog (which folds date-picker into the stock list) shows 56+48.
+ *  4. LOADING_ITEMS — the 47-piece loader suite under `src/registry/items/`.
+ *  The public registry index therefore serves 55 + 7 + 48 + 47 = 157 items,
+ *  while the component catalog (which folds date-picker into the stock list)
+ *  shows 56 + 7 + 48 + 47.
  */
 import vendorMetaJson from '@/registry/vendor-meta.json'
 import aiElementsMetaJson from '@/registry/ai-elements-meta.json'
@@ -171,11 +173,78 @@ export const AI_ELEMENTS_ITEMS: GrayItem[] = (
 
 export const AI_ELEMENT_NAMES = AI_ELEMENTS_ITEMS.map((item) => item.name)
 
-/** Every item served by the registry — 110 items in total. */
+/**
+ * The loader suite — 47 motion primitives (rings, dots, bars, text and
+ * terminal effects). Self-contained single files under `src/registry/items/`,
+ * styled with currentColor and paced by the `--duration` custom property.
+ */
+const loaderDefs: Array<[string, string, string]> = [
+  ['halo', 'Halo', 'An open ring chasing its own tail. The every-project spinner.'],
+  ['arc-sweep', 'Arc Sweep', 'A single bold arc riding a faint ring.'],
+  ['twin-arc', 'Twin Arc', 'Two opposite arcs sharing one rotating orbit.'],
+  ['fan-blade', 'Fan Blade', 'A quarter arc sweeping in circles.'],
+  ['saturn', 'Saturn', 'A soft disc ringed by a faster orbiting arc.'],
+  ['echo-ring', 'Echo Ring', 'A faint outer ring answered by a brighter inner arc.'],
+  ['orbit-dot', 'Orbit Dot', 'A solid satellite riding the rim of a quiet ring.'],
+  ['clockwork', 'Clockwork', 'A dial with a single hand sweeping the face.'],
+  ['tick-ring', 'Tick Ring', 'Twelve ticks lighting up around the dial in sequence.'],
+  ['turbine', 'Turbine', 'Eight blades spinning around an empty hub.'],
+  ['dash-orbit', 'Dash Orbit', 'A dashed ring that breathes while it turns.'],
+  ['dash-bloom', 'Dash Bloom', 'A stroke stretching and shrinking around a turning circle.'],
+  ['gradient-arc', 'Gradient Arc', 'An arc whose tail fades to nothing as the head leads.'],
+  ['shooting-star', 'Shooting Star', 'A bright head with a fading trail lapping a circular orbit.'],
+  ['lemniscate', 'Lemniscate', 'A spark running laps around a figure-eight.'],
+  ['figure-eight', 'Figure Eight', 'A loop morphing between a circle and an infinity sign.'],
+  ['pixel-diamond', 'Pixel Diamond', 'Eight square facets lighting up around a diamond.'],
+  ['blink-dots', 'Blink Dots', 'Dots taking turns to light up in a row.'],
+  ['float-dots', 'Float Dots', 'Dots drifting up and down in a gentle relay.'],
+  ['jump-dots', 'Jump Dots', 'Dots swelling and dimming in a rolling wave.'],
+  ['breathe-dots', 'Breathe Dots', 'Dots inflating and settling in a slow breath.'],
+  ['chat-typing', 'Chat Typing', 'The someone-is-typing bounce for message threads.'],
+  ['heartbeat', 'Heartbeat', 'One dot breathing for single-point status.'],
+  ['soft-pulse', 'Soft Pulse', 'An outlined circle inhaling, exhaling and dimming.'],
+  ['sonar', 'Sonar', 'Rings radiating outward and dissolving, two beats apart.'],
+  ['dot-halo', 'Dot Halo', 'A crown of dots brightening in turn around a centre.'],
+  ['vortex', 'Vortex', 'Dots swirling and blooming on an invisible ring.'],
+  ['trio-orbit', 'Trio Orbit', 'Three dots on a spinning rod, sweeping like a propeller.'],
+  ['binary-orbit', 'Binary Orbit', 'A nucleus with two moons circling on opposite sides.'],
+  ['pulse-bars', 'Pulse Bars', 'Slim bars contracting and brightening in sequence.'],
+  ['sound-wave', 'Sound Wave', 'Five rounded bars swaying like a voice waveform.'],
+  ['scaffold', 'Scaffold', 'A breathing placeholder block for loading layouts.'],
+  ['frame-scan', 'Frame Scan', 'An image frame swept by a scanner beam.'],
+  ['googly-eyes', 'Googly Eyes', 'Two eyes whose pupils wander and occasionally blink.'],
+  ['block-slide', 'Block Slide', 'Shaded ASCII cells gliding along a dim track.'],
+  ['block-march', 'Block March', 'Shaded ASCII cells marching across a dim track.'],
+  ['pixel-patrol', 'Pixel Patrol', 'A train of cells pacing an invisible rectangle.'],
+  ['block-track', 'Block Track', 'The paced patrol with its route drawn as a dim rail.'],
+  ['block-corners', 'Block Corners', 'A block touring a drawn grid, pausing at corners.'],
+  ['block-orbit', 'Block Orbit', 'A bright cell circling the rim of a drawn grid.'],
+  ['block-snake', 'Block Snake', 'Cells chasing each other around an invisible square.'],
+  ['tide', 'Tide', 'Brightness rolling outward from a row’s centre and back.'],
+  ['prompt-caret', 'Prompt Caret', 'A shell prompt with a hard-blinking block cursor.'],
+  ['fade-text', 'Fade Text', 'A line of text drifting in and out of focus.'],
+  ['ellipsis', 'Ellipsis', 'A message followed by dots appearing one at a time.'],
+  ['shimmer-wave', 'Shimmer Wave', 'Brightness rippling through text character by character.'],
+  ['gloss-sweep', 'Gloss Sweep', 'A band of brightness sliding across muted text.'],
+]
+
+export const LOADING_ITEMS: GrayItem[] = loaderDefs.map(([name, title, description]) => ({
+  name,
+  type: 'registry:component',
+  title,
+  description,
+  dependencies: [],
+  registryDependencies: [],
+  files: [exclusiveFile(name)],
+  exclusive: true,
+}))
+
+/** Every item served by the registry — stock, originals, AI set and loaders. */
 export const ALL_REGISTRY_ITEMS: GrayItem[] = [
   ...Object.values(STOCK_META),
   ...EXCLUSIVE_ITEMS,
   ...AI_ELEMENTS_ITEMS,
+  ...LOADING_ITEMS,
 ]
 
 /**
@@ -186,10 +255,11 @@ export const DATE_PICKER: GrayItem = EXCLUSIVE_ITEMS.find(
   (item) => item.name === 'date-picker',
 ) as GrayItem
 
-/** Union lookup across all 110 items. */
+/** Union lookup across every registry item. */
 export function getRegistryItemMeta(slug: string): GrayItem | null {
   return (
     EXCLUSIVE_ITEMS.find((item) => item.name === slug) ??
+    LOADING_ITEMS.find((item) => item.name === slug) ??
     STOCK_META[slug] ??
     AI_ELEMENTS_ITEMS.find((item) => item.name === slug) ??
     null
