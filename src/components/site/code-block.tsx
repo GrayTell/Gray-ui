@@ -56,6 +56,7 @@ export function CodeBlock({
         <button
           type="button"
           onClick={onCopy}
+          data-sound="copy"
           aria-label={copied ? 'Copied to clipboard' : 'Copy to clipboard'}
           className="inline-flex h-7 w-7 items-center justify-center rounded-md text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-600"
         >

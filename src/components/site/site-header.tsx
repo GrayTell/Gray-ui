@@ -10,6 +10,7 @@ import { GrayLogo } from '@/components/site/logo'
 import { GitHubLink } from '@/components/site/github-link'
 import { MainNav } from '@/components/site/main-nav'
 import { ModeSwitcher } from '@/components/site/mode-switcher'
+import { SoundToggle } from '@/components/site/sound'
 import { SearchTrigger } from '@/components/site/search-trigger'
 
 /**
@@ -46,6 +47,7 @@ export function SiteHeader() {
             />
             <GitHubLink />
             <Separator orientation="vertical" />
+            <SoundToggle />
             <ModeSwitcher />
             <Button asChild size="sm" className="h-[31px] rounded-lg">
               <Link href="/docs">

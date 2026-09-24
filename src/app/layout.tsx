@@ -3,6 +3,7 @@ import { Geist as FontSans, Geist_Mono as FontMono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/site/theme-provider";
+import { SoundEffects } from "@/components/site/sound";
 import { siteConfig } from "@/lib/site";
 
 /**
@@ -128,8 +129,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
-          <Toaster />
+          <SoundEffects>
+            {children}
+            <Toaster />
+          </SoundEffects>
         </ThemeProvider>
         <script
           type="application/ld+json"

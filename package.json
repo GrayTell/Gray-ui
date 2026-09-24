@@ -63,6 +63,7 @@
     "@streamdown/mermaid": "^1.0.2",
     "@tanstack/react-query": "^5.82.0",
     "@tanstack/react-table": "^8.21.3",
+    "@web-kits/audio": "^0.2.0",
     "@xyflow/react": "^12.11.6",
     "ai": "^7.0.102",
     "ansi-to-react": "^6.2.6",
