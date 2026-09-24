@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'Components',
   description:
     'Browse the full Gray UI catalog — primitives, dashboard cards and AI chat elements, all live-previewable and installable in one command. New components ship regularly.',
+  alternates: { canonical: '/components' },
 }
 
 function ComponentGrid({
@@ -39,7 +40,65 @@ function ComponentGrid({
   )
 }
 
-export default function ComponentsPage() {
+export default async function ComponentsPage({
+  searchParams,
+}: {
+  /** `?q=` powers the WebSite SearchAction — server-rendered so results are
+   * visible to crawlers and AI agents without executing JavaScript. */
+  searchParams: Promise<{ q?: string }>
+}) {
+  const { q } = await searchParams
+  const query = (q ?? '').trim().toLowerCase()
+
+  const matchesQuery = (component: (typeof COMPONENTS)[number]) =>
+    !query ||
+    component.name.toLowerCase().includes(query) ||
+    component.description.toLowerCase().includes(query)
+
+  if (query) {
+    const results = COMPONENTS.filter(matchesQuery)
+
+    return (
+      <div className="flex scroll-mt-24 items-stretch pb-8 text-[1.05rem] sm:text-[15px] xl:w-full">
+        <div className="flex min-w-0 flex-1 flex-col">
+          <div className="h-(--top-spacing) shrink-0" />
+          <div className="mx-auto flex w-full max-w-160 min-w-0 flex-1 flex-col gap-6 px-4 py-6 text-foreground md:px-0 lg:py-8 dark:text-foreground">
+            <div className="flex flex-col gap-2">
+              <h1 className="scroll-m-24 text-3xl font-semibold tracking-tight sm:text-3xl">
+                Search results
+              </h1>
+              <p className="text-[1.05rem] text-muted-foreground sm:text-base">
+                {results.length} component{results.length === 1 ? '' : 's'}{' '}
+                matching{' '}<span className="font-medium text-foreground">“{q}”</span>
+              </p>
+            </div>
+            <div className="w-full flex-1 pb-16 sm:pb-0">
+              {results.length > 0 ? (
+                <ComponentGrid items={results} />
+              ) : (
+                <div className="rounded-lg border border-dashed p-8 text-center">
+                  <p className="text-muted-foreground">
+                    No components match “{q}”.
+                  </p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Browse the{' '}
+                    <Link
+                      href="/components"
+                      className="font-medium underline underline-offset-4"
+                    >
+                      full catalog
+                    </Link>{' '}
+                    or ask Gray AI in the command menu (⌘K).
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   const newComponents = COMPONENTS.filter((c) =>
     NEW_COMPONENTS.includes(c.slug)
   )

@@ -89,6 +89,14 @@ const jsonLd = {
         url: siteConfig.owner.url,
         jobTitle: "Owner of Graytell Labs",
       },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${siteConfig.url}/components?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
     },
     {
       "@type": "Organization",
@@ -101,6 +109,7 @@ const jsonLd = {
         name: siteConfig.owner.name,
         url: siteConfig.owner.url,
       },
+      sameAs: [siteConfig.links.github, siteConfig.url],
     },
     {
       "@type": "SoftwareApplication",
@@ -109,6 +118,11 @@ const jsonLd = {
       operatingSystem: "Web",
       description: siteConfig.description,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      softwareVersion: siteConfig.version,
+      dateModified: siteConfig.lastUpdated,
+      license: "https://github.com/GrayTell/Gray-ui/blob/main/LICENSE",
+      codeRepository: siteConfig.links.github,
+      keywords: siteConfig.keywords.join(", "),
       author: {
         "@type": "Organization",
         name: siteConfig.author.name,

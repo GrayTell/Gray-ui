@@ -11,6 +11,10 @@ export const siteConfig = {
     'Composable, accessible React components with sensible defaults. Ship a design system you truly own — every piece arrives as source code you can bend, extend and rebuild.',
   /** Production origin — the canonical Gray UI domain, used everywhere. */
   url: 'https://gray-ui.vercel.app',
+  /** Current release version (mirrors package.json). */
+  version: '0.2.1',
+  /** Date of the last significant content change (W3C datetime, for sitemap lastmod + schema dateModified). */
+  lastUpdated: '2026-09-24',
   author: { name: 'Graytell Labs', url: 'https://github.com/graytell' },
   /** Graytell Labs is owned by Anubhav Sapkota. */
   owner: { name: 'Anubhav Sapkota', url: 'https://github.com/GrayTell' },
