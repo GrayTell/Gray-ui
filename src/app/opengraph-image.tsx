@@ -97,7 +97,7 @@ export default async function OpengraphImage() {
           }}
         >
           <span style={{ display: "flex" }}>
-            by Graytell Labs 2026
+            by Graytell Labs (owned by Anubhav Sapkota)
           </span>
           <span style={{ display: "flex", color: "#52525b" }}>·</span>
           <span style={{ display: "flex", color: "#71717a" }}>gray-ui.vercel.app</span>

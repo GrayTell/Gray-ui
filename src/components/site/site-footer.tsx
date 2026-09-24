@@ -2,7 +2,7 @@ import { siteConfig } from '@/lib/site'
 
 /**
  * Gray UI site footer
- * credited to Graytell Labs.
+ * credited to Graytell Labs (owned by Anubhav Sapkota).
  */
 export function SiteFooter() {
   return (
@@ -19,6 +19,16 @@ export function SiteFooter() {
             >
               Graytell Labs
             </a>{' '}
+            (owned by{' '}
+            <a
+              href={siteConfig.owner.url}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium underline underline-offset-4"
+            >
+              Anubhav Sapkota
+            </a>
+            ){' '}
             at{' '}
             <a
               href={siteConfig.links.org}

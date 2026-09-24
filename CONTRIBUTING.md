@@ -74,4 +74,4 @@ Open an issue with: what you did, what you expected, what happened, and a minima
 
 ---
 
-**Created by [Graytell Labs](https://github.com/graytell) 2026** — visit [github.com/graytell](https://github.com/graytell) for more info and our other products.
+**Created by [Graytell Labs](https://github.com/graytell) 2026 — owned by [Anubhav Sapkota](https://github.com/GrayTell)** — visit [github.com/graytell](https://github.com/graytell) for more info and our other products.

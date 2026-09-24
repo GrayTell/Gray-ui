@@ -98,8 +98,8 @@ Good first issues: new dashboard primitives, docs improvements, component demos.
 
 ## License
 
-[MIT](LICENSE) © 2026 Graytell Labs
+[MIT](LICENSE) © 2026 Graytell Labs — owned by Anubhav Sapkota
 
 ## Credits
 
-**Created by [Graytell Labs](https://github.com/graytell) 2026** — visit [github.com/graytell](https://github.com/graytell) for more info and our other products.
+**Created by [Graytell Labs](https://github.com/graytell) 2026 — owned by [Anubhav Sapkota](https://github.com/GrayTell)** — visit [github.com/graytell](https://github.com/graytell) for more info and our other products.
