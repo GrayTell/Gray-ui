@@ -1,969 +1,1189 @@
 [
-  {
-    "name": "agent",
-    "title": "Agent",
-    "description": "Autonomous agent card: header with status, instructions panel and a tools breakdown for presenting agent runs.",
+ {
+  "name": "agent",
+  "title": "Agent",
+  "description": "Autonomous agent card: header with status, instructions panel and a tools breakdown for presenting agent runs.",
+  "type": "registry:component",
+  "dependencies": [
+   "ai",
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "accordion",
+   "badge",
+   "https://gray-ui.vercel.app/r/code-block.json"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/agent.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "ai",
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "accordion",
-      "badge",
-      "https://gray-ui.vercel.app/r/code-block.json"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/agent.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/agent.tsx"
-      }
-    ]
-  },
-  {
-    "name": "artifact",
-    "title": "Artifact",
-    "description": "Canvas panel for long-form AI output \u2014 collapsible body with title, description, actions and close.",
+    "target": "components/ai-elements/agent.tsx"
+   }
+  ]
+ },
+ {
+  "name": "artifact",
+  "title": "Artifact",
+  "description": "Canvas panel for long-form AI output \u2014 collapsible body with title, description, actions and close.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "button",
+   "tooltip"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/artifact.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "button",
-      "tooltip"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/artifact.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/artifact.tsx"
-      }
-    ]
-  },
-  {
-    "name": "attachments",
-    "title": "Attachments",
-    "description": "File attachment system with previews, media categories, sizing variants and removal for chat composers.",
+    "target": "components/ai-elements/artifact.tsx"
+   }
+  ]
+ },
+ {
+  "name": "attachments",
+  "title": "Attachments",
+  "description": "File attachment system with previews, media categories, sizing variants and removal for chat composers.",
+  "type": "registry:component",
+  "dependencies": [
+   "ai",
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "button",
+   "hover-card"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/attachments.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "ai",
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "button",
-      "hover-card"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/attachments.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/attachments.tsx"
-      }
-    ]
-  },
-  {
-    "name": "audio-player",
-    "title": "AudioPlayer",
-    "description": "media-chrome powered audio player with play, seek, speed and time controls for voice outputs.",
+    "target": "components/ai-elements/attachments.tsx"
+   }
+  ]
+ },
+ {
+  "name": "audio-player",
+  "title": "AudioPlayer",
+  "description": "media-chrome powered audio player with play, seek, speed and time controls for voice outputs.",
+  "type": "registry:component",
+  "dependencies": [
+   "ai",
+   "media-chrome"
+  ],
+  "registryDependencies": [
+   "button",
+   "button-group"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/audio-player.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "ai",
-      "media-chrome"
-    ],
-    "registryDependencies": [
-      "button",
-      "button-group"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/audio-player.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/audio-player.tsx"
-      }
-    ]
-  },
-  {
-    "name": "canvas",
-    "title": "Canvas",
-    "description": "React Flow canvas wrapper for node-based AI interfaces \u2014 drag, zoom and connect nodes.",
+    "target": "components/ai-elements/audio-player.tsx"
+   }
+  ]
+ },
+ {
+  "name": "canvas",
+  "title": "Canvas",
+  "description": "React Flow canvas wrapper for node-based AI interfaces \u2014 drag, zoom and connect nodes.",
+  "type": "registry:component",
+  "dependencies": [
+   "@xyflow/react"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/canvas.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "@xyflow/react"
-    ],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/canvas.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/canvas.tsx"
-      }
-    ]
-  },
-  {
-    "name": "chain-of-thought",
-    "title": "ChainOfThought",
-    "description": "Expandable step-by-step reasoning timeline with statuses, search results and generated images.",
+    "target": "components/ai-elements/canvas.tsx"
+   }
+  ]
+ },
+ {
+  "name": "chain-of-thought",
+  "title": "ChainOfThought",
+  "description": "Expandable step-by-step reasoning timeline with statuses, search results and generated images.",
+  "type": "registry:component",
+  "dependencies": [
+   "@radix-ui/react-use-controllable-state",
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "badge",
+   "collapsible"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/chain-of-thought.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "@radix-ui/react-use-controllable-state",
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "badge",
-      "collapsible"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/chain-of-thought.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/chain-of-thought.tsx"
-      }
-    ]
-  },
-  {
-    "name": "checkpoint",
-    "title": "Checkpoint",
-    "description": "Conversation checkpoint marker with a restore trigger for message-history branching.",
+    "target": "components/ai-elements/chain-of-thought.tsx"
+   }
+  ]
+ },
+ {
+  "name": "checkpoint",
+  "title": "Checkpoint",
+  "description": "Conversation checkpoint marker with a restore trigger for message-history branching.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "button",
+   "separator",
+   "tooltip"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/checkpoint.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "button",
-      "separator",
-      "tooltip"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/checkpoint.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/checkpoint.tsx"
-      }
-    ]
-  },
-  {
-    "name": "code-block",
-    "title": "CodeBlock",
-    "description": "Shiki-highlighted code block with filename, language selector and copy button \u2014 streaming-safe.",
+    "target": "components/ai-elements/checkpoint.tsx"
+   }
+  ]
+ },
+ {
+  "name": "code-block",
+  "title": "CodeBlock",
+  "description": "Shiki-highlighted code block with filename, language selector and copy button \u2014 streaming-safe.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react",
+   "shiki"
+  ],
+  "registryDependencies": [
+   "button",
+   "select"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/code-block.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react",
-      "shiki"
-    ],
-    "registryDependencies": [
-      "button",
-      "select"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/code-block.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/code-block.tsx"
-      }
-    ]
-  },
-  {
-    "name": "commit",
-    "title": "Commit",
-    "description": "Git commit presentation card with hash, message, author metadata and separators.",
+    "target": "components/ai-elements/code-block.tsx"
+   }
+  ]
+ },
+ {
+  "name": "commit",
+  "title": "Commit",
+  "description": "Git commit presentation card with hash, message, author metadata and separators.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "avatar",
+   "button",
+   "collapsible"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/commit.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "avatar",
-      "button",
-      "collapsible"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/commit.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/commit.tsx"
-      }
-    ]
-  },
-  {
-    "name": "confirmation",
-    "title": "Confirmation",
-    "description": "Tool-call confirmation prompt rendering the request with accepted/rejected outcome actions.",
+    "target": "components/ai-elements/commit.tsx"
+   }
+  ]
+ },
+ {
+  "name": "confirmation",
+  "title": "Confirmation",
+  "description": "Tool-call confirmation prompt rendering the request with accepted/rejected outcome actions.",
+  "type": "registry:component",
+  "dependencies": [
+   "ai"
+  ],
+  "registryDependencies": [
+   "alert",
+   "button"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/confirmation.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "ai"
-    ],
-    "registryDependencies": [
-      "alert",
-      "button"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/confirmation.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/confirmation.tsx"
-      }
-    ]
-  },
-  {
-    "name": "connection",
-    "title": "Connection",
-    "description": "Animated React Flow connection handle pair for linking nodes in AI workflows.",
+    "target": "components/ai-elements/confirmation.tsx"
+   }
+  ]
+ },
+ {
+  "name": "connection",
+  "title": "Connection",
+  "description": "Animated React Flow connection handle pair for linking nodes in AI workflows.",
+  "type": "registry:component",
+  "dependencies": [
+   "@xyflow/react"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/connection.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "@xyflow/react"
-    ],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/connection.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/connection.tsx"
-      }
-    ]
-  },
-  {
-    "name": "context",
-    "title": "Context",
-    "description": "Context-window usage meter with model info, token breakdown and cost estimates via tokenlens.",
+    "target": "components/ai-elements/connection.tsx"
+   }
+  ]
+ },
+ {
+  "name": "context",
+  "title": "Context",
+  "description": "Context-window usage meter with model info, token breakdown and cost estimates via tokenlens.",
+  "type": "registry:component",
+  "dependencies": [
+   "ai",
+   "tokenlens"
+  ],
+  "registryDependencies": [
+   "button",
+   "hover-card",
+   "progress"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/context.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "ai",
-      "tokenlens"
-    ],
-    "registryDependencies": [
-      "button",
-      "hover-card",
-      "progress"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/context.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/context.tsx"
-      }
-    ]
-  },
-  {
-    "name": "controls",
-    "title": "Controls",
-    "description": "React Flow zoom and fit-view controls styled to the design system.",
+    "target": "components/ai-elements/context.tsx"
+   }
+  ]
+ },
+ {
+  "name": "controls",
+  "title": "Controls",
+  "description": "React Flow zoom and fit-view controls styled to the design system.",
+  "type": "registry:component",
+  "dependencies": [
+   "@xyflow/react"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/controls.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "@xyflow/react"
-    ],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/controls.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/controls.tsx"
-      }
-    ]
-  },
-  {
-    "name": "conversation",
-    "title": "Conversation",
-    "description": "Auto-scrolling message container with scroll-to-bottom button and markdown transcript download.",
+    "target": "components/ai-elements/controls.tsx"
+   }
+  ]
+ },
+ {
+  "name": "conversation",
+  "title": "Conversation",
+  "description": "Auto-scrolling message container with scroll-to-bottom button and markdown transcript download.",
+  "type": "registry:component",
+  "dependencies": [
+   "ai",
+   "lucide-react",
+   "use-stick-to-bottom"
+  ],
+  "registryDependencies": [
+   "button"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/conversation.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "ai",
-      "lucide-react",
-      "use-stick-to-bottom"
-    ],
-    "registryDependencies": [
-      "button"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/conversation.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/conversation.tsx"
-      }
-    ]
-  },
-  {
-    "name": "edge",
-    "title": "Edge",
-    "description": "Custom React Flow edge variants \u2014 animated, temporary and removable connection lines.",
+    "target": "components/ai-elements/conversation.tsx"
+   }
+  ]
+ },
+ {
+  "name": "edge",
+  "title": "Edge",
+  "description": "Custom React Flow edge variants \u2014 animated, temporary and removable connection lines.",
+  "type": "registry:component",
+  "dependencies": [
+   "@xyflow/react"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/edge.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "@xyflow/react"
-    ],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/edge.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/edge.tsx"
-      }
-    ]
-  },
-  {
-    "name": "environment-variables",
-    "title": "EnvironmentVariables",
-    "description": "Masked environment variable list with reveal toggles and copy actions.",
+    "target": "components/ai-elements/edge.tsx"
+   }
+  ]
+ },
+ {
+  "name": "environment-variables",
+  "title": "EnvironmentVariables",
+  "description": "Masked environment variable list with reveal toggles and copy actions.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "badge",
+   "button",
+   "switch"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/environment-variables.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "badge",
-      "button",
-      "switch"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/environment-variables.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/environment-variables.tsx"
-      }
-    ]
-  },
-  {
-    "name": "file-tree",
-    "title": "FileTree",
-    "description": "Recursive file tree with folders, files, icons and row actions for code outputs.",
+    "target": "components/ai-elements/environment-variables.tsx"
+   }
+  ]
+ },
+ {
+  "name": "file-tree",
+  "title": "FileTree",
+  "description": "Recursive file tree with folders, files, icons and row actions for code outputs.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "collapsible"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/file-tree.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "collapsible"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/file-tree.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/file-tree.tsx"
-      }
-    ]
-  },
-  {
-    "name": "image",
-    "title": "Image",
-    "description": "AI-generated image display with aspect ratios and generating/uploaded status states.",
+    "target": "components/ai-elements/file-tree.tsx"
+   }
+  ]
+ },
+ {
+  "name": "image",
+  "title": "Image",
+  "description": "AI-generated image display with aspect ratios and generating/uploaded status states.",
+  "type": "registry:component",
+  "dependencies": [
+   "ai"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/image.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "ai"
-    ],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/image.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/image.tsx"
-      }
-    ]
-  },
-  {
-    "name": "inline-citation",
-    "title": "InlineCitation",
-    "description": "Inline citations with hoverable source cards and a quote carousel.",
+    "target": "components/ai-elements/image.tsx"
+   }
+  ]
+ },
+ {
+  "name": "inline-citation",
+  "title": "InlineCitation",
+  "description": "Inline citations with hoverable source cards and a quote carousel.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "badge",
+   "carousel",
+   "hover-card"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/inline-citation.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "badge",
-      "carousel",
-      "hover-card"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/inline-citation.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/inline-citation.tsx"
-      }
-    ]
-  },
-  {
-    "name": "jsx-preview",
-    "title": "JsxPreview",
-    "description": "Live JSX string renderer with error handling for dynamic AI-generated UI.",
+    "target": "components/ai-elements/inline-citation.tsx"
+   }
+  ]
+ },
+ {
+  "name": "jsx-preview",
+  "title": "JsxPreview",
+  "description": "Live JSX string renderer with error handling for dynamic AI-generated UI.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react",
+   "react-jsx-parser"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/jsx-preview.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react",
-      "react-jsx-parser"
-    ],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/jsx-preview.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/jsx-preview.tsx"
-      }
-    ]
-  },
-  {
-    "name": "message",
-    "title": "Message",
-    "description": "Chat message with avatar, content, hover actions and regenerate branches.",
+    "target": "components/ai-elements/jsx-preview.tsx"
+   }
+  ]
+ },
+ {
+  "name": "message",
+  "title": "Message",
+  "description": "Chat message with avatar, content, hover actions and regenerate branches.",
+  "type": "registry:component",
+  "dependencies": [
+   "@streamdown/cjk",
+   "@streamdown/code",
+   "@streamdown/math",
+   "@streamdown/mermaid",
+   "ai",
+   "lucide-react",
+   "streamdown"
+  ],
+  "registryDependencies": [
+   "button",
+   "button-group",
+   "tooltip"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/message.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "@streamdown/cjk",
-      "@streamdown/code",
-      "@streamdown/math",
-      "@streamdown/mermaid",
-      "ai",
-      "lucide-react",
-      "streamdown"
-    ],
-    "registryDependencies": [
-      "button",
-      "button-group",
-      "tooltip"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/message.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/message.tsx"
-      }
-    ]
-  },
-  {
-    "name": "mic-selector",
-    "title": "MicSelector",
-    "description": "Audio input device picker listing available microphones via getUserMedia.",
+    "target": "components/ai-elements/message.tsx"
+   }
+  ]
+ },
+ {
+  "name": "mic-selector",
+  "title": "MicSelector",
+  "description": "Audio input device picker listing available microphones via getUserMedia.",
+  "type": "registry:component",
+  "dependencies": [
+   "@radix-ui/react-use-controllable-state",
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "button",
+   "command",
+   "popover"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/mic-selector.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "@radix-ui/react-use-controllable-state",
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "button",
-      "command",
-      "popover"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/mic-selector.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/mic-selector.tsx"
-      }
-    ]
-  },
-  {
-    "name": "model-selector",
-    "title": "ModelSelector",
-    "description": "Searchable model picker dialog with grouped providers and keyboard navigation.",
+    "target": "components/ai-elements/mic-selector.tsx"
+   }
+  ]
+ },
+ {
+  "name": "model-selector",
+  "title": "ModelSelector",
+  "description": "Searchable model picker dialog with grouped providers and keyboard navigation.",
+  "type": "registry:component",
+  "dependencies": [],
+  "registryDependencies": [
+   "command",
+   "dialog"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/model-selector.tsx",
     "type": "registry:component",
-    "dependencies": [],
-    "registryDependencies": [
-      "command",
-      "dialog"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/model-selector.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/model-selector.tsx"
-      }
-    ]
-  },
-  {
-    "name": "node",
-    "title": "Node",
-    "description": "React Flow node card with header, title, description and actions for workflow graphs.",
+    "target": "components/ai-elements/model-selector.tsx"
+   }
+  ]
+ },
+ {
+  "name": "node",
+  "title": "Node",
+  "description": "React Flow node card with header, title, description and actions for workflow graphs.",
+  "type": "registry:component",
+  "dependencies": [
+   "@xyflow/react"
+  ],
+  "registryDependencies": [
+   "card"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/node.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "@xyflow/react"
-    ],
-    "registryDependencies": [
-      "card"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/node.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/node.tsx"
-      }
-    ]
-  },
-  {
-    "name": "open-in-chat",
-    "title": "OpenInChat",
-    "description": "Dropdown deep links that open the current prompt in ChatGPT, Claude, v0 and more.",
+    "target": "components/ai-elements/node.tsx"
+   }
+  ]
+ },
+ {
+  "name": "open-in-chat",
+  "title": "OpenInChat",
+  "description": "Dropdown deep links that open the current prompt in ChatGPT, Claude, v0 and more.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "button",
+   "dropdown-menu"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/open-in-chat.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "button",
-      "dropdown-menu"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/open-in-chat.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/open-in-chat.tsx"
-      }
-    ]
-  },
-  {
-    "name": "package-info",
-    "title": "PackageInfo",
-    "description": "Dependency change card with name, version range and change-type badge for code agents.",
+    "target": "components/ai-elements/open-in-chat.tsx"
+   }
+  ]
+ },
+ {
+  "name": "package-info",
+  "title": "PackageInfo",
+  "description": "Dependency change card with name, version range and change-type badge for code agents.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "badge"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/package-info.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "badge"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/package-info.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/package-info.tsx"
-      }
-    ]
-  },
-  {
-    "name": "panel",
-    "title": "Panel",
-    "description": "React Flow panel container for positioning overlays on the canvas.",
+    "target": "components/ai-elements/package-info.tsx"
+   }
+  ]
+ },
+ {
+  "name": "panel",
+  "title": "Panel",
+  "description": "React Flow panel container for positioning overlays on the canvas.",
+  "type": "registry:component",
+  "dependencies": [
+   "@xyflow/react"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/panel.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "@xyflow/react"
-    ],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/panel.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/panel.tsx"
-      }
-    ]
-  },
-  {
-    "name": "persona",
-    "title": "Persona",
-    "description": "Rive-animated AI avatar face with idle, listening, thinking and speaking states.",
+    "target": "components/ai-elements/panel.tsx"
+   }
+  ]
+ },
+ {
+  "name": "persona",
+  "title": "Persona",
+  "description": "Rive-animated AI avatar face with idle, listening, thinking and speaking states.",
+  "type": "registry:component",
+  "dependencies": [
+   "@rive-app/react-webgl2"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/persona.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "@rive-app/react-webgl2"
-    ],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/persona.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/persona.tsx"
-      }
-    ]
-  },
-  {
-    "name": "plan",
-    "title": "Plan",
-    "description": "Plan presentation card with title, description, actions and step content.",
+    "target": "components/ai-elements/persona.tsx"
+   }
+  ]
+ },
+ {
+  "name": "plan",
+  "title": "Plan",
+  "description": "Plan presentation card with title, description, actions and step content.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "button",
+   "card",
+   "collapsible",
+   "https://gray-ui.vercel.app/r/shimmer.json"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/plan.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "button",
-      "card",
-      "collapsible",
-      "https://gray-ui.vercel.app/r/shimmer.json"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/plan.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/plan.tsx"
-      }
-    ]
-  },
-  {
-    "name": "prompt-input",
-    "title": "PromptInput",
-    "description": "Full composer: auto-growing textarea, attachments, screenshots, model picker, tools and submit.",
+    "target": "components/ai-elements/plan.tsx"
+   }
+  ]
+ },
+ {
+  "name": "prompt-input",
+  "title": "PromptInput",
+  "description": "Full composer: auto-growing textarea, attachments, screenshots, model picker, tools and submit.",
+  "type": "registry:component",
+  "dependencies": [
+   "ai",
+   "lucide-react",
+   "nanoid"
+  ],
+  "registryDependencies": [
+   "command",
+   "dropdown-menu",
+   "hover-card",
+   "input-group",
+   "select",
+   "spinner",
+   "tooltip"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/prompt-input.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "ai",
-      "lucide-react",
-      "nanoid"
-    ],
-    "registryDependencies": [
-      "command",
-      "dropdown-menu",
-      "hover-card",
-      "input-group",
-      "select",
-      "spinner",
-      "tooltip"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/prompt-input.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/prompt-input.tsx"
-      }
-    ]
-  },
-  {
-    "name": "queue",
-    "title": "Queue",
-    "description": "Queued prompt list with status indicators, descriptions and per-item actions.",
+    "target": "components/ai-elements/prompt-input.tsx"
+   }
+  ]
+ },
+ {
+  "name": "queue",
+  "title": "Queue",
+  "description": "Queued prompt list with status indicators, descriptions and per-item actions.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "button",
+   "collapsible",
+   "scroll-area"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/queue.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "button",
-      "collapsible",
-      "scroll-area"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/queue.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/queue.tsx"
-      }
-    ]
-  },
-  {
-    "name": "reasoning",
-    "title": "Reasoning",
-    "description": "Collapsible thinking section with a streaming duration trigger.",
+    "target": "components/ai-elements/queue.tsx"
+   }
+  ]
+ },
+ {
+  "name": "reasoning",
+  "title": "Reasoning",
+  "description": "Collapsible thinking section with a streaming duration trigger.",
+  "type": "registry:component",
+  "dependencies": [
+   "@radix-ui/react-use-controllable-state",
+   "@streamdown/cjk",
+   "@streamdown/code",
+   "@streamdown/math",
+   "@streamdown/mermaid",
+   "lucide-react",
+   "streamdown"
+  ],
+  "registryDependencies": [
+   "collapsible",
+   "https://gray-ui.vercel.app/r/shimmer.json"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/reasoning.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "@radix-ui/react-use-controllable-state",
-      "@streamdown/cjk",
-      "@streamdown/code",
-      "@streamdown/math",
-      "@streamdown/mermaid",
-      "lucide-react",
-      "streamdown"
-    ],
-    "registryDependencies": [
-      "collapsible",
-      "https://gray-ui.vercel.app/r/shimmer.json"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/reasoning.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/reasoning.tsx"
-      }
-    ]
-  },
-  {
-    "name": "sandbox",
-    "title": "Sandbox",
-    "description": "Code sandbox preview with file tabs, live preview and console output.",
+    "target": "components/ai-elements/reasoning.tsx"
+   }
+  ]
+ },
+ {
+  "name": "sandbox",
+  "title": "Sandbox",
+  "description": "Code sandbox preview with file tabs, live preview and console output.",
+  "type": "registry:component",
+  "dependencies": [
+   "ai",
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "collapsible",
+   "tabs",
+   "https://gray-ui.vercel.app/r/tool.json"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/sandbox.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "ai",
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "collapsible",
-      "tabs",
-      "https://gray-ui.vercel.app/r/tool.json"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/sandbox.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/sandbox.tsx"
-      }
-    ]
-  },
-  {
-    "name": "schema-display",
-    "title": "SchemaDisplay",
-    "description": "API schema documentation card with method, path, description and parameter tables.",
+    "target": "components/ai-elements/sandbox.tsx"
+   }
+  ]
+ },
+ {
+  "name": "schema-display",
+  "title": "SchemaDisplay",
+  "description": "API schema documentation card with method, path, description and parameter tables.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "badge",
+   "collapsible"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/schema-display.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "badge",
-      "collapsible"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/schema-display.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/schema-display.tsx"
-      }
-    ]
-  },
-  {
-    "name": "shimmer",
-    "title": "Shimmer",
-    "description": "Animated shimmer text for loading and streaming states.",
+    "target": "components/ai-elements/schema-display.tsx"
+   }
+  ]
+ },
+ {
+  "name": "shimmer",
+  "title": "Shimmer",
+  "description": "Animated shimmer text for loading and streaming states.",
+  "type": "registry:component",
+  "dependencies": [
+   "motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/shimmer.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "motion"
-    ],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/shimmer.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/shimmer.tsx"
-      }
-    ]
-  },
-  {
-    "name": "snippet",
-    "title": "Snippet",
-    "description": "Inline command display with addon slot and copy button.",
+    "target": "components/ai-elements/shimmer.tsx"
+   }
+  ]
+ },
+ {
+  "name": "snippet",
+  "title": "Snippet",
+  "description": "Inline command display with addon slot and copy button.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "input-group"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/snippet.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "input-group"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/snippet.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/snippet.tsx"
-      }
-    ]
-  },
-  {
-    "name": "sources",
-    "title": "Sources",
-    "description": "Collapsible list of cited sources with count trigger and per-source rows.",
+    "target": "components/ai-elements/snippet.tsx"
+   }
+  ]
+ },
+ {
+  "name": "sources",
+  "title": "Sources",
+  "description": "Collapsible list of cited sources with count trigger and per-source rows.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "collapsible"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/sources.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "collapsible"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/sources.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/sources.tsx"
-      }
-    ]
-  },
-  {
-    "name": "speech-input",
-    "title": "SpeechInput",
-    "description": "Voice recording button with live listening state for dictation.",
+    "target": "components/ai-elements/sources.tsx"
+   }
+  ]
+ },
+ {
+  "name": "speech-input",
+  "title": "SpeechInput",
+  "description": "Voice recording button with live listening state for dictation.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "button",
+   "spinner"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/speech-input.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "button",
-      "spinner"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/speech-input.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/speech-input.tsx"
-      }
-    ]
-  },
-  {
-    "name": "stack-trace",
-    "title": "StackTrace",
-    "description": "Formatted error stack card with error type, message and actions.",
+    "target": "components/ai-elements/speech-input.tsx"
+   }
+  ]
+ },
+ {
+  "name": "stack-trace",
+  "title": "StackTrace",
+  "description": "Formatted error stack card with error type, message and actions.",
+  "type": "registry:component",
+  "dependencies": [
+   "@radix-ui/react-use-controllable-state",
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "button",
+   "collapsible"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/stack-trace.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "@radix-ui/react-use-controllable-state",
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "button",
-      "collapsible"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/stack-trace.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/stack-trace.tsx"
-      }
-    ]
-  },
-  {
-    "name": "suggestion",
-    "title": "Suggestion",
-    "description": "Prompt suggestion chips for quick follow-up questions.",
+    "target": "components/ai-elements/stack-trace.tsx"
+   }
+  ]
+ },
+ {
+  "name": "suggestion",
+  "title": "Suggestion",
+  "description": "Prompt suggestion chips for quick follow-up questions.",
+  "type": "registry:component",
+  "dependencies": [],
+  "registryDependencies": [
+   "button",
+   "scroll-area"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/suggestion.tsx",
     "type": "registry:component",
-    "dependencies": [],
-    "registryDependencies": [
-      "button",
-      "scroll-area"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/suggestion.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/suggestion.tsx"
-      }
-    ]
-  },
-  {
-    "name": "task",
-    "title": "Task",
-    "description": "Collapsible task list with status icons and file links for agent plans.",
+    "target": "components/ai-elements/suggestion.tsx"
+   }
+  ]
+ },
+ {
+  "name": "task",
+  "title": "Task",
+  "description": "Collapsible task list with status icons and file links for agent plans.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "collapsible"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/task.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "collapsible"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/task.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/task.tsx"
-      }
-    ]
-  },
-  {
-    "name": "terminal",
-    "title": "Terminal",
-    "description": "Terminal output card with status badge, copy and clear actions.",
+    "target": "components/ai-elements/task.tsx"
+   }
+  ]
+ },
+ {
+  "name": "terminal",
+  "title": "Terminal",
+  "description": "Terminal output card with status badge, copy and clear actions.",
+  "type": "registry:component",
+  "dependencies": [
+   "ansi-to-react",
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "button"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/terminal.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "ansi-to-react",
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "button"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/terminal.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/terminal.tsx"
-      }
-    ]
-  },
-  {
-    "name": "test-results",
-    "title": "TestResults",
-    "description": "Test suite report with pass/fail progress, duration and per-test rows.",
+    "target": "components/ai-elements/terminal.tsx"
+   }
+  ]
+ },
+ {
+  "name": "test-results",
+  "title": "TestResults",
+  "description": "Test suite report with pass/fail progress, duration and per-test rows.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "badge",
+   "collapsible"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/test-results.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "badge",
-      "collapsible"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/test-results.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/test-results.tsx"
-      }
-    ]
-  },
-  {
-    "name": "tool",
-    "title": "Tool",
-    "description": "AI SDK tool-part renderer with status badge, input and output panels.",
+    "target": "components/ai-elements/test-results.tsx"
+   }
+  ]
+ },
+ {
+  "name": "tool",
+  "title": "Tool",
+  "description": "AI SDK tool-part renderer with status badge, input and output panels.",
+  "type": "registry:component",
+  "dependencies": [
+   "ai",
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "badge",
+   "collapsible",
+   "https://gray-ui.vercel.app/r/code-block.json"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/tool.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "ai",
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "badge",
-      "collapsible",
-      "https://gray-ui.vercel.app/r/code-block.json"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/tool.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/tool.tsx"
-      }
-    ]
-  },
-  {
-    "name": "toolbar",
-    "title": "Toolbar",
-    "description": "React Flow floating toolbar for node selection actions.",
+    "target": "components/ai-elements/tool.tsx"
+   }
+  ]
+ },
+ {
+  "name": "toolbar",
+  "title": "Toolbar",
+  "description": "React Flow floating toolbar for node selection actions.",
+  "type": "registry:component",
+  "dependencies": [
+   "@xyflow/react"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/toolbar.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "@xyflow/react"
-    ],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/toolbar.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/toolbar.tsx"
-      }
-    ]
-  },
-  {
-    "name": "transcription",
-    "title": "Transcription",
-    "description": "Audio transcript display with per-segment timestamps.",
+    "target": "components/ai-elements/toolbar.tsx"
+   }
+  ]
+ },
+ {
+  "name": "transcription",
+  "title": "Transcription",
+  "description": "Audio transcript display with per-segment timestamps.",
+  "type": "registry:component",
+  "dependencies": [
+   "@radix-ui/react-use-controllable-state",
+   "ai"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/transcription.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "@radix-ui/react-use-controllable-state",
-      "ai"
-    ],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/transcription.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/transcription.tsx"
-      }
-    ]
-  },
-  {
-    "name": "voice-selector",
-    "title": "VoiceSelector",
-    "description": "TTS voice picker dialog with searchable voices and audio previews.",
+    "target": "components/ai-elements/transcription.tsx"
+   }
+  ]
+ },
+ {
+  "name": "voice-selector",
+  "title": "VoiceSelector",
+  "description": "TTS voice picker dialog with searchable voices and audio previews.",
+  "type": "registry:component",
+  "dependencies": [
+   "@radix-ui/react-use-controllable-state",
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "button",
+   "command",
+   "dialog",
+   "spinner"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/voice-selector.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "@radix-ui/react-use-controllable-state",
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "button",
-      "command",
-      "dialog",
-      "spinner"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/voice-selector.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/voice-selector.tsx"
-      }
-    ]
-  },
-  {
-    "name": "web-preview",
-    "title": "WebPreview",
-    "description": "Iframe website preview with URL bar, navigation, loading progress and console.",
+    "target": "components/ai-elements/voice-selector.tsx"
+   }
+  ]
+ },
+ {
+  "name": "web-preview",
+  "title": "WebPreview",
+  "description": "Iframe website preview with URL bar, navigation, loading progress and console.",
+  "type": "registry:component",
+  "dependencies": [
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "button",
+   "collapsible",
+   "input",
+   "tooltip"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/web-preview.tsx",
     "type": "registry:component",
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "button",
-      "collapsible",
-      "input",
-      "tooltip"
-    ],
-    "files": [
-      {
-        "path": "registry/default/ai-elements/web-preview.tsx",
-        "type": "registry:component",
-        "target": "components/ai-elements/web-preview.tsx"
-      }
-    ]
-  }
+    "target": "components/ai-elements/web-preview.tsx"
+   }
+  ]
+ },
+ {
+  "name": "agent-reasoning-steps",
+  "title": "Agent Reasoning Steps",
+  "description": "Self-playing reasoning trace: stages advance on a timer while reasoning lines stream in, then the run settles. Monochrome pulse glyphs, reduced-motion aware.",
+  "type": "registry:component",
+  "dependencies": [
+   "framer-motion",
+   "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/agent-reasoning-steps.tsx",
+    "type": "registry:component",
+    "target": "components/ai-elements/agent-reasoning-steps.tsx"
+   }
+  ]
+ },
+ {
+  "name": "agent-streaming-text",
+  "title": "Agent Streaming Text",
+  "description": "Reply text that arrives word by word with a blinking caret; wordMs sets the pace (16ms/word by default).",
+  "type": "registry:component",
+  "dependencies": [
+   "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/agent-streaming-text.tsx",
+    "type": "registry:component",
+    "target": "components/ai-elements/agent-streaming-text.tsx"
+   }
+  ]
+ },
+ {
+  "name": "agent-task-list",
+  "title": "Agent Task List",
+  "description": "A checklist an agent works through on its own: pending, active and done states with a running count.",
+  "type": "registry:component",
+  "dependencies": [
+   "framer-motion",
+   "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/agent-task-list.tsx",
+    "type": "registry:component",
+    "target": "components/ai-elements/agent-task-list.tsx"
+   }
+  ]
+ },
+ {
+  "name": "agent-plan-card",
+  "title": "Agent Plan Card",
+  "description": "The plan an agent proposes before running it: summary, staggered to-do list and an accept action.",
+  "type": "registry:component",
+  "dependencies": [
+   "framer-motion",
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "button"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/agent-plan-card.tsx",
+    "type": "registry:component",
+    "target": "components/ai-elements/agent-plan-card.tsx"
+   }
+  ]
+ },
+ {
+  "name": "agent-file-diff",
+  "title": "Agent File Diff",
+  "description": "File changes an agent proposes, revealed line by line with old/new gutter numbers and monochrome tints.",
+  "type": "registry:component",
+  "dependencies": [
+   "framer-motion",
+   "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/agent-file-diff.tsx",
+    "type": "registry:component",
+    "target": "components/ai-elements/agent-file-diff.tsx"
+   }
+  ]
+ },
+ {
+  "name": "agent-image-generation",
+  "title": "Agent Image Generation",
+  "description": "An image request running its phases from queue to upscale, then the reveal. Ships a pure-CSS halftone plate \u2014 zero assets.",
+  "type": "registry:component",
+  "dependencies": [
+   "framer-motion",
+   "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/agent-image-generation.tsx",
+    "type": "registry:component",
+    "target": "components/ai-elements/agent-image-generation.tsx"
+   }
+  ]
+ },
+ {
+  "name": "agent-inline-citations",
+  "title": "Agent Inline Citations",
+  "description": "A claim that streams in first, then attaches its citation pills one by one.",
+  "type": "registry:component",
+  "dependencies": [
+   "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/agent-inline-citations.tsx",
+    "type": "registry:component",
+    "target": "components/ai-elements/agent-inline-citations.tsx"
+   }
+  ]
+ },
+ {
+  "name": "agent-code-reveal",
+  "title": "Agent Code Reveal",
+  "description": "Code an agent is writing, landing a line at a time inside terminal chrome with a trailing caret.",
+  "type": "registry:component",
+  "dependencies": [
+   "framer-motion",
+   "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/agent-code-reveal.tsx",
+    "type": "registry:component",
+    "target": "components/ai-elements/agent-code-reveal.tsx"
+   }
+  ]
+ },
+ {
+  "name": "agent-chat-input",
+  "title": "Agent Chat Input",
+  "description": "Composer with a looping typewriter suggestion that yields to the user the moment they focus.",
+  "type": "registry:component",
+  "dependencies": [
+   "framer-motion",
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "button",
+   "textarea"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/agent-chat-input.tsx",
+    "type": "registry:component",
+    "target": "components/ai-elements/agent-chat-input.tsx"
+   }
+  ]
+ },
+ {
+  "name": "agent-question-card",
+  "title": "Agent Question Card",
+  "description": "The agent pausing to ask a human: question lands first, options stagger in, pick one to resolve.",
+  "type": "registry:component",
+  "dependencies": [
+   "framer-motion",
+   "lucide-react"
+  ],
+  "registryDependencies": [
+   "button"
+  ],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/agent-question-card.tsx",
+    "type": "registry:component",
+    "target": "components/ai-elements/agent-question-card.tsx"
+   }
+  ]
+ },
+ {
+  "name": "agent-message-bubble",
+  "title": "Agent Message",
+  "description": "A single conversation message with a spring entrance; user and assistant alignments included.",
+  "type": "registry:component",
+  "dependencies": [
+   "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/agent-message.tsx",
+    "type": "registry:component",
+    "target": "components/ai-elements/agent-message.tsx"
+   }
+  ]
+ },
+ {
+  "name": "agent-message-scroller",
+  "title": "Agent Message Scroller",
+  "description": "A conversation that plays itself: scripted turns, thinking dots, edge fades, human-scroll pause and a skip control.",
+  "type": "registry:component",
+  "dependencies": [
+   "framer-motion",
+   "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+   {
+    "path": "registry/default/ai-elements/agent-message-scroller.tsx",
+    "type": "registry:component",
+    "target": "components/ai-elements/agent-message-scroller.tsx"
+   }
+  ]
+ }
 ]

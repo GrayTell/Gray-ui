@@ -20,6 +20,13 @@ import { AI_ELEMENTS_ITEMS, type GrayItem } from '@/lib/registry'
 const loadChat = () => import('@/components/site/demos/ai-chat')
 const loadCode = () => import('@/components/site/demos/ai-code')
 const loadMedia = () => import('@/components/site/demos/ai-media')
+const loadAgents = () => import('@/components/site/demos/ai-agents')
+
+function fromAgents(key: string): ComponentType {
+  return dynamic(
+    () => loadAgents().then((m) => m[key as keyof Awaited<ReturnType<typeof loadAgents>>] as ComponentType)
+  )
+}
 
 function fromChat(key: string): ComponentType {
   return dynamic(
@@ -88,6 +95,20 @@ const ToolbarDemo = fromMedia('ToolbarDemo')
 const CheckpointDemo = fromMedia('CheckpointDemo')
 const ModelSelectorDemo = fromMedia('ModelSelectorDemo')
 
+// — Agent suite (self-playing scenarios) —
+const AgentReasoningStepsDemo = fromAgents('AgentReasoningStepsDemo')
+const AgentStreamingTextDemo = fromAgents('AgentStreamingTextDemo')
+const AgentTaskListDemo = fromAgents('AgentTaskListDemo')
+const AgentPlanCardDemo = fromAgents('AgentPlanCardDemo')
+const AgentFileDiffDemo = fromAgents('AgentFileDiffDemo')
+const AgentImageGenerationDemo = fromAgents('AgentImageGenerationDemo')
+const AgentInlineCitationsDemo = fromAgents('AgentInlineCitationsDemo')
+const AgentCodeRevealDemo = fromAgents('AgentCodeRevealDemo')
+const AgentChatInputDemo = fromAgents('AgentChatInputDemo')
+const AgentQuestionCardDemo = fromAgents('AgentQuestionCardDemo')
+const AgentMessageDemo2 = fromAgents('AgentMessageDemo')
+const AgentMessageScrollerDemo = fromAgents('AgentMessageScrollerDemo')
+
 /** Registry metadata for an AI element by slug (guaranteed present). */
 function aiMeta(slug: string): GrayItem {
   const item = AI_ELEMENTS_ITEMS.find((entry) => entry.name === slug)
@@ -145,6 +166,20 @@ const DEMOS: Record<string, ComponentType> = {
   toolbar: ToolbarDemo,
   checkpoint: CheckpointDemo,
   'model-selector': ModelSelectorDemo,
+  'agent-reasoning-steps': AgentReasoningStepsDemo,
+  'agent-streaming-text': AgentStreamingTextDemo,
+  'agent-task-list': AgentTaskListDemo,
+  'agent-plan-card': AgentPlanCardDemo,
+  'agent-file-diff': AgentFileDiffDemo,
+  'agent-image-generation': AgentImageGenerationDemo,
+  'agent-inline-citations': AgentInlineCitationsDemo,
+  'agent-code-reveal': AgentCodeRevealDemo,
+  'agent-chat-input': AgentChatInputDemo,
+  'agent-question-card': AgentQuestionCardDemo,
+  // NOTE: catalog slug is `agent-message-bubble` so the classic `message`
+  // element and the animated one never collide in the registry namespace.
+  'agent-message-bubble': AgentMessageDemo2,
+  'agent-message-scroller': AgentMessageScrollerDemo,
 }
 
 /** Concise usage snippet per element, shown in the Code tab. */
@@ -640,6 +675,128 @@ export function Demo() {
       <ModelSelectorTrigger />
       <ModelSelectorContent>{/* searchable model list */}</ModelSelectorContent>
     </ModelSelector>
+  )
+}`,
+  'agent-reasoning-steps': `import { AgentReasoningSteps } from "@/components/ai-elements/agent-reasoning-steps"
+
+export function Demo() {
+  return (
+    <AgentReasoningSteps
+      stages={[
+        { title: "Reading the spec", reasoning: ["Note the constraints…"] },
+        { title: "Drafting the approach" },
+      ]}
+      stageMs={1750}
+      reasonMs={650}
+      onDone={() => console.log("settled")}
+    />
+  )
+}`,
+  'agent-streaming-text': `import { AgentStreamingText } from "@/components/ai-elements/agent-streaming-text"
+
+export function Demo() {
+  return <AgentStreamingText wordMs={16}>A reply arriving a word at a time.</AgentStreamingText>
+}`,
+  'agent-task-list': `import { AgentTaskList } from "@/components/ai-elements/agent-task-list"
+
+export function Demo() {
+  return (
+    <AgentTaskList
+      taskMs={1600}
+      tasks={[{ title: "Scaffold the route" }, { title: "Wire the source" }]}
+    />
+  )
+}`,
+  'agent-plan-card': `import { AgentPlanCard } from "@/components/ai-elements/agent-plan-card"
+
+export function Demo() {
+  return (
+    <AgentPlanCard
+      title="Keyboard-first command menu"
+      description="Index routes, rank by recency, bind to Cmd+K."
+      items={[{ title: "Collect actions" }, { title: "Score matches" }]}
+      onRun={() => runPlan()}
+    />
+  )
+}`,
+  'agent-file-diff': `import { AgentFileDiff } from "@/components/ai-elements/agent-file-diff"
+
+export function Demo() {
+  return (
+    <AgentFileDiff
+      path="src/lib/slugify.ts"
+      lineMs={220}
+      lines={[
+        { kind: "context", text: "export function slugify() {", oldNo: 1, newNo: 1 },
+        { kind: "del", text: "return input;", oldNo: 2 },
+        { kind: "add", text: "return input.toLowerCase();", newNo: 2 },
+      ]}
+    />
+  )
+}`,
+  'agent-image-generation': `import { AgentImageGeneration } from "@/components/ai-elements/agent-image-generation"
+
+export function Demo() {
+  return <AgentImageGeneration phaseMs={1100} prompt="Monochrome halftone landscape" />
+}`,
+  'agent-inline-citations': `import { AgentInlineCitations } from "@/components/ai-elements/agent-inline-citations"
+
+export function Demo() {
+  return (
+    <AgentInlineCitations
+      text="Registry catalogs keep install payloads small."
+      sources={[{ id: "[1]", title: "Registry schema" }]}
+    />
+  )
+}`,
+  'agent-code-reveal': `import { AgentCodeReveal } from "@/components/ai-elements/agent-code-reveal"
+
+export function Demo() {
+  return (
+    <AgentCodeReveal
+      filename="src/lib/rank.ts"
+      lineMs={260}
+      lines={["export function rank() {", "  // …", "}"]}
+    />
+  )
+}`,
+  'agent-chat-input': `import { AgentChatInput } from "@/components/ai-elements/agent-chat-input"
+
+export function Demo() {
+  return <AgentChatInput suggestion="Draft the v0.3 release notes…" onSubmit={send} />
+}`,
+  'agent-question-card': `import { AgentQuestionCard } from "@/components/ai-elements/agent-question-card"
+
+export function Demo() {
+  return (
+    <AgentQuestionCard
+      question="Where should the example app live?"
+      options={[{ label: "App Router route group" }, { label: "Standalone folder" }]}
+      onAnswer={(label) => choose(label)}
+    />
+  )
+}`,
+  'agent-message-bubble': `import { AgentMessage } from "@/components/ai-elements/agent-message"
+
+export function Demo() {
+  return (
+    <div className="flex flex-col gap-3">
+      <AgentMessage from="user">Can the registry serve one component?</AgentMessage>
+      <AgentMessage from="assistant" delay={0.6}>Yes — at its own registry URL.</AgentMessage>
+    </div>
+  )
+}`,
+  'agent-message-scroller': `import { AgentMessageScroller } from "@/components/ai-elements/agent-message-scroller"
+
+export function Demo() {
+  return (
+    <AgentMessageScroller
+      turnMs={2100}
+      turns={[
+        { from: "user", text: "How do I add the registry?" },
+        { from: "assistant", text: "Add its URL to components.json." },
+      ]}
+    />
   )
 }`,
 }
