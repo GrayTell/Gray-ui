@@ -1,6 +1,6 @@
-Gray UI — the component library that feels like it was already part of your design system.
+There's more to discover.
 
-Open-source React components. Copy. Paste. Ship.
+Gray UI — open-source React components. Copy. Paste. Ship.
 npx gray-ui@latest add date-picker
 
 github.com/GrayTell/Gray-ui — by Anubhav Sapkota

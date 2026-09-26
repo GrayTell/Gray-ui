@@ -80,3 +80,26 @@ visible ≥2s settled (~0.3s+ per word).
 
 Music: original procedural score in D major (the bundled "Happy Beats" tracks clash with
 the reference's calm film mood); SFX: Kenney via the brag skill, same-key, low-gain blend.
+
+---
+
+## v2 edit — "exactly like the Opus 5.5 film" (user steering)
+
+User asked for a new edit that recreates the reference film faithfully rather than adapting it.
+Reference was re-analyzed: scene detection found ~25 fast cuts in 20s — a wordless organic
+montage for the first half, then words only in the back half ("There's" 8.5s → "more to"
+10.5s → "discover" 12.5s → "Opus 5.5" 16.3s → logo lockup 17.4s → dusk limb finale).
+ASR on the reference audio returned empty text → the film is music-only, no voiceover.
+
+v2 structure (20.0s @ 24fps, 1920×1080), matching the ref beat-for-beat:
+- 0.0–8.6s: 8-shot wordless montage of warm organic "arc" plates (dusk limb, coral rim,
+  watermelon, blueprint dome, honey, stem cells, magenta droplets, cracked sphere), 0.3s dissolves
+- 8.6–15.85s: "There's" / "more to" / "discover" in Source Serif over matched plates,
+  words persisting across cuts, color adapting (cream on dark, near-black on cream)
+- 15.85–19.3s: "Gray UI" reveal on night sky with faint blue limb glow → "◆ Gray UI" lockup
+- 19.3–20.0s: dusk limb finale
+
+Plates: 13 AI-generated 1344×768 images (image-generation skill), re-rolled where composition
+missed; agate shot rotated −78° with scale ≥1.92 so the rotated plate covers the frame.
+Score: original 20s piano-led piece in D (score2.wav, audio2.js) — no SFX, no VO, like the ref.
+Deliverable: gray.mp4 (v1 silver adaptation archived as work/gray-v1-silver.mp4).
