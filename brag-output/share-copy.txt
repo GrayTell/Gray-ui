@@ -1,2 +1,6 @@
-No colors. No noise. Just the backbone.
-Gray UI is a component registry in strict monochrome — 228 React components (shadcn-style + all Vercel AI Elements) shipped as copy-paste source code you own. One command and it's yours: npx gray-ui@latest add date-picker
+Gray UI — the component library that feels like it was already part of your design system.
+
+Open-source React components. Copy. Paste. Ship.
+npx gray-ui@latest add date-picker
+
+github.com/GrayTell/Gray-ui — by Anubhav Sapkota

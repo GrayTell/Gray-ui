@@ -73,3 +73,4 @@ REFERENCE.md
 /shadcn-ui/
 # Local credentials file (tokens) — never committed
 credentials.md
+brag-output/
