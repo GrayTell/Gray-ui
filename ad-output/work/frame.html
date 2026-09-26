@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html,body{margin:0;padding:0;background:#000;overflow:hidden}
+  #stage{width:1920px;height:1080px;position:relative;background:#0b0b0c}
+  canvas{display:block}
+</style>
+</head>
+<body>
+<div id="stage"><canvas id="c" width="1920" height="1080"></canvas></div>
+<script>
+/* ============================================================
+   GRAY UI — launch ad v2 "backbone cut"  (1920x1080, 48s @15fps)
+   Deterministic renderer: frame = f(t). No state, no randomness
+   outside seeded PRNG. Research-driven structure:
+   Hook(0-4) Promise(4-9) Demo(9-33) Proof(33-41) EndCard(41-48)
+   ============================================================ */
+const W = 1920, H = 1080;
+const cv = document.getElementById('c');
+const ctx = cv.getContext('2d');
+const TAU = Math.PI * 2;
+
+/* ---------- utils ---------- */
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function clamp01(x){return x<0?0:x>1?1:x}
+function lerp(a,b,k){return a+(b-a)*k}
+function ease(k){return k<0?0:k>1?1:k*k*(3-2*k)}                 // smoothstep
+function easeOut(k){k=clamp01(k);return 1-Math.pow(1-k,3)}
+function easeInOut(k){k=clamp01(k);return k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2}
+function backOut(k){k=clamp01(k);const c=1.70158;return 1+(c+1)*Math.pow(k-1,3)+c*Math.pow(k-1,2)}
+/* segment progress: 0..1 over [a,b] */
+function seg(t,a,b){return clamp01((t-a)/(b-a))}
+const AMBER = '#f0a24a', AMBER_HI = '#ffc987', INK='#e8e6e1', DIM='#9b978f', FAINT='#55524d';
+
+/* ---------- global film treatment ---------- */
+let grainCanvas = null;
+function grain(t){
+  if(!grainCanvas){ grainCanvas=document.createElement('canvas'); grainCanvas.width=480; grainCanvas.height=270; }
+  const g = grainCanvas.getContext('2d');
+  const img = g.createImageData(480,270);
+  const r = mulberry32(1000 + (Math.floor(t*15)) * 7919);
+  for(let i=0;i<img.data.length;i+=4){
+    const v = 128 + (r()-0.5)*110;
+    img.data[i]=v; img.data[i+1]=v; img.data[i+2]=v; img.data[i+3]=255;
+  }
+  g.putImageData(img,0,0);
+  ctx.save();
+  ctx.globalCompositeOperation='soft-light';
+  ctx.globalAlpha=0.20;
+  ctx.imageSmoothingEnabled=true;
+  ctx.drawImage(grainCanvas,0,0,W,H);
+  ctx.restore();
+}
+function vignette(){
+  const rg = ctx.createRadialGradient(W/2,H/2,H*0.32,W/2,H/2,H*0.98);
+  rg.addColorStop(0,'rgba(0,0,0,0)');
+  rg.addColorStop(1,'rgba(0,0,0,0.55)');
+  ctx.fillStyle=rg; ctx.fillRect(0,0,W,H);
+}
+function letterbox(){
+  ctx.fillStyle='#000';
+  ctx.fillRect(0,0,W,84); ctx.fillRect(0,H-84,W,84);
+}
+function bg(t){
+  // subtle vertical charcoal gradient + slow breathing warmth
+  const g = ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,'#0d0d0f'); g.addColorStop(.55,'#0b0b0c'); g.addColorStop(1,'#080809');
+  ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+  const warm = 0.05 + 0.02*Math.sin(t*0.35);
+  ctx.fillStyle=`rgba(240,162,74,${warm*0.09})`;
+  ctx.beginPath(); ctx.ellipse(W/2,H*0.86,W*0.7,H*0.28,0,0,TAU); ctx.fill();
+}
+function lightSweep(t, a, b, alpha){ // diagonal band sweeping during [a,b]
+  const k = seg(t,a,b); if(k<=0||k>=1) return;
+  const x = lerp(-500, W+500, k);
+  const g = ctx.createLinearGradient(x-420,0,x+420,H);
+  g.addColorStop(0,'rgba(255,255,255,0)');
+  g.addColorStop(0.5,`rgba(255,236,200,${alpha*Math.sin(k*Math.PI)})`);
+  g.addColorStop(1,'rgba(255,255,255,0)');
+  ctx.save(); ctx.globalCompositeOperation='screen';
+  ctx.fillStyle=g; ctx.fillRect(0,0,W,H); ctx.restore();
+}
+function serif(size,weight){ ctx.font=`${weight||400} ${size}px Georgia, 'Times New Roman', serif`; }
+function sans(size,weight){ ctx.font=`${weight||500} ${size}px 'Satoshi', -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif`; }
+function mono(size,weight){ ctx.font=`${weight||500} ${size}px 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace`; }
+
+/* ---------- shared component painters ---------- */
+function roundRect(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
+}
+/* draw a floating UI card with soft screen-space glow + gradient reflection */
+function uiCard(t, o){
+  const s = o.scale||1, rise = o.rise||0, alpha = o.alpha==null?1:o.alpha;
+  const cx = o.x||W/2, cy = (o.y||H/2) + rise;
+  const w = o.w||560, h = o.h||360;
+  // screen-space ambient glow (fills full frame, fades to 0 within radius → no seams)
+  if(alpha>0.01){
+    ctx.save();
+    const rg = ctx.createRadialGradient(cx,cy,10,cx,cy,Math.max(w,h)*s*1.05);
+    rg.addColorStop(0,`rgba(240,162,74,${0.09*alpha})`);
+    rg.addColorStop(0.55,`rgba(240,162,74,${0.04*alpha})`);
+    rg.addColorStop(1,'rgba(240,162,74,0)');
+    ctx.fillStyle=rg; ctx.fillRect(0,0,W,H);
+    ctx.restore();
+  }
+  // card body
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.translate(cx,cy); ctx.scale(s,s); ctx.translate(-w/2,-h/2);
+  ctx.shadowColor='rgba(0,0,0,0.7)'; ctx.shadowBlur=60; ctx.shadowOffsetY=30;
+  ctx.fillStyle='#141416';
+  roundRect(0,0,w,h,22); ctx.fill();
+  ctx.shadowColor='transparent';
+  ctx.strokeStyle='rgba(255,255,255,0.10)'; ctx.lineWidth=1.5;
+  roundRect(0.75,0.75,w-1.5,h-1.5,22); ctx.stroke();
+  ctx.restore();
+  // floor reflection: gradient-faded rect (no hard edges)
+  if(alpha>0.01){
+    const ry = cy + h*s/2 + 14, rw = w*s, rh = h*s*0.5;
+    const g2 = ctx.createLinearGradient(0, ry, 0, ry+rh);
+    g2.addColorStop(0,`rgba(36,36,40,${0.20*alpha})`);
+    g2.addColorStop(1,'rgba(36,36,40,0)');
+    ctx.save();
+    ctx.beginPath(); roundRect(cx-rw/2, ry, rw, rh, 22); ctx.clip();
+    ctx.fillStyle=g2; ctx.fillRect(cx-rw/2, ry, rw, rh);
+    ctx.restore();
+  }
+  return {x:cx - w*s/2, y:cy - h*s/2, w:w*s, h:h*s, alpha, scale:s};
+}
+function togglePaint(x,y,wd,ht,on,animK){ // animK 0..1 knob position
+  ctx.save();
+  roundRect(x,y,wd,ht,ht/2);
+  ctx.fillStyle = on ? 'rgba(240,162,74,0.92)' : 'rgba(255,255,255,0.12)';
+  ctx.fill();
+  ctx.strokeStyle='rgba(255,255,255,0.18)'; ctx.lineWidth=1; ctx.stroke();
+  const kx = x + ht*0.14 + animK*(wd - ht*1.28);
+  const ky = y + ht*0.14, kd = ht*0.72;
+  ctx.shadowColor='rgba(0,0,0,0.55)'; ctx.shadowBlur=14; ctx.shadowOffsetY=4;
+  ctx.fillStyle='#f5f3ef';
+  ctx.beginPath(); ctx.arc(kx+kd/2,ky+kd/2,kd/2,0,TAU); ctx.fill();
+  ctx.shadowColor='transparent';
+  ctx.restore();
+}
+function wireSkeleton(t, alpha){ // promise-scene wireframe push-in
+  const k = seg(t,4,9);
+  const sc = lerp(1.0,1.07,k);
+  ctx.save();
+  ctx.translate(W/2,H/2); ctx.scale(sc,sc); ctx.translate(-W/2,-H/2);
+  ctx.globalAlpha = alpha;
+  ctx.strokeStyle='rgba(240,162,74,0.5)'; ctx.lineWidth=1.2;
+  const dash = (t*26)%30;
+  ctx.setLineDash([10,14]); ctx.lineDashOffset=-dash;
+  roundRect(560,260,800,520,26); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(560,352); ctx.lineTo(1360,352); ctx.stroke();
+  // header dots
+  ctx.setLineDash([]);
+  for(let i=0;i<3;i++){ ctx.beginPath(); ctx.arc(608+i*34,306,7,0,TAU); ctx.stroke(); }
+  // inner blocks
+  ctx.strokeStyle='rgba(240,162,74,0.30)';
+  roundRect(600,396,330,180,14); ctx.stroke();
+  roundRect(960,396,360,180,14); ctx.stroke();
+  roundRect(600,606,720,130,14); ctx.stroke();
+  // spine line behind — the "backbone"
+  ctx.strokeStyle='rgba(240,162,74,0.55)'; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.moveTo(240,900); ctx.quadraticCurveTo(W/2,820,1680,900); ctx.stroke();
+  for(let i=0;i<=10;i++){
+    const px = lerp(240,1680,i/10);
+    const py = 900 - Math.sin(Math.PI*i/10)*80*(1-0.0);
+    ctx.beginPath(); ctx.arc(px,py,3.5,0,TAU); ctx.fillStyle='rgba(240,162,74,0.8)'; ctx.fill();
+  }
+  ctx.restore();
+}
+
+/* ============================================================
+   SCENES
+   ============================================================ */
+/* S1 HOOK : 0 – 4  ------------------------------------------ */
+function s1(t){
+  bg(t);
+  // darkness with a faint rim on the toggle before flip
+  const flip = seg(t,0.8,1.05);                 // knob anim
+  const on = t>=0.92;
+  const bloom = ease(seg(t,0.92,2.2));
+  // macro toggle center
+  const tgW = 430, tgH = 210;
+  const tx = W/2 - tgW/2, ty = H/2 - tgH/2 - 40;
+  // bloom light
+  if(bloom>0){
+    const rg = ctx.createRadialGradient(W/2,ty+tgH/2,10,W/2,ty+tgH/2,260+520*bloom);
+    rg.addColorStop(0,`rgba(255,196,120,${0.30*bloom})`);
+    rg.addColorStop(0.4,`rgba(240,162,74,${0.09*bloom})`);
+    rg.addColorStop(1,'rgba(240,162,74,0)');
+    ctx.fillStyle=rg; ctx.fillRect(0,0,W,H);
+  }
+  // shock ring at flip
+  const ring = seg(t,1.0,1.7);
+  if(ring>0&&ring<1){
+    ctx.save(); ctx.globalAlpha=(1-ring)*0.5; ctx.strokeStyle=AMBER; ctx.lineWidth=3*(1-ring)+1;
+    ctx.beginPath(); ctx.arc(W/2,ty+tgH/2, 120+easeOut(ring)*620,0,TAU); ctx.stroke(); ctx.restore();
+  }
+  togglePaint(tx,ty,tgW,tgH,on,ease(flip));
+  // wordmark group: GRAY rises, UI snaps in beside it at 3.0
+  const gk = seg(t,1.2,2.3);
+  const uk = seg(t,3.0,3.45);
+  if(gk>0||uk>0){
+    serif(300,700); ctx.textBaseline='middle';
+    const wg = ctx.measureText('GRAY').width, gap = 70;
+    const total = wg + gap + ctx.measureText('UI').width;
+    const leftX = W/2 - total/2;
+    const yy = H/2+230;
+    if(gk>0){
+      ctx.save();
+      ctx.globalAlpha = ease(gk);
+      ctx.textAlign='left';
+      ctx.fillStyle=INK;
+      ctx.fillText('GRAY', leftX, yy + (1-easeOut(gk))*60);
+      ctx.restore();
+    }
+    if(uk>0){
+      ctx.save();
+      const bs = 1 + (1-backOut(uk))*0.25;
+      ctx.translate(leftX+wg+gap+40, yy); ctx.scale(bs,bs);
+      ctx.textAlign='center';
+      ctx.globalAlpha = ease(uk);
+      ctx.fillStyle=AMBER_HI;
+      ctx.fillText('UI', 0, 0);
+      ctx.restore();
+    }
+  }
+  const ln = seg(t,3.25,3.9);
+  if(ln>0){
+    ctx.save(); ctx.globalAlpha=0.9;
+    ctx.strokeStyle=AMBER; ctx.lineWidth=6; ctx.lineCap='round';
+    const wBar = lerp(0,820,easeOut(ln));
+    ctx.beginPath(); ctx.moveTo(W/2-wBar/2,H/2+430); ctx.lineTo(W/2+wBar/2,H/2+430); ctx.stroke();
+    ctx.restore();
+  }
+  lightSweep(t,1.0,2.4,0.10);
+}
+/* S2 PROMISE : 4 – 9 ---------------------------------------- */
+function s2(t){
+  bg(t);
+  wireSkeleton(t, 0.5);
+  const words = ['The','backbone','of','your','design','system.'];
+  ctx.textBaseline='middle';
+  words.forEach((w,i)=>{
+    const a = seg(t, 4.6+i*0.55, 5.15+i*0.55);
+    if(a<=0) return;
+    ctx.save();
+    ctx.globalAlpha = ease(a);
+    serif(120, 400); ctx.textAlign='left';
+    const italic = (i%2===1);
+    if(italic) ctx.font=`italic 400 120px Georgia, 'Times New Roman', serif`;
+    const accent = (i===1||i===4);
+    ctx.fillStyle = accent ? AMBER_HI : INK;
+    // measure x offset
+    let xoff = 0;
+    for(let j=0;j<i;j++){
+      ctx.font = (j%2===1)?`italic 400 120px Georgia, 'Times New Roman', serif`:`400 120px Georgia, 'Times New Roman', serif`;
+      xoff += ctx.measureText(words[j]+' ').width;
+    }
+    ctx.font = italic?`italic 400 120px Georgia, 'Times New Roman', serif`:`400 120px Georgia, 'Times New Roman', serif`;
+    const total = (()=>{let tw=0; for(const ww of words){ tw+=ctx.measureText(ww+' ').width; } return tw;})();
+    const yy = H/2 + (1-easeOut(a))*40;
+    ctx.fillText(w, W/2 - total/2 + xoff, yy);
+    ctx.restore();
+  });
+  lightSweep(t,4.2,5.6,0.08);
+}
+/* S3 DEMO common stage --------------------------------------- */
+function demoEntry(t,a){ return { rise:(1-easeOut(seg(t,a,a+0.6)))*50, alpha:ease(seg(t,a,a+0.6)), scale:lerp(1.0,1.07,seg(t,a,a+4)) }; }
+function sceneCaption(txt, k){
+  if(k<=0) return;
+  ctx.save();
+  ctx.globalAlpha = ease(k)*0.85;
+  sans(34,500); ctx.textAlign='center'; ctx.fillStyle=DIM;
+  ctx.fillText(txt, W/2, 952);
+  ctx.restore();
+}
+/* 3a toggle card 9-13 */
+function s3a(t){
+  const e = demoEntry(t,9);
+  const card = uiCard(t,{w:640,h:340,rise:e.rise,alpha:e.alpha,scale:e.scale,y:H/2-30});
+  ctx.save(); ctx.globalAlpha=card.alpha;
+  const x0=card.x+70,y0=card.y+96;
+  sans(40,700); ctx.fillStyle=INK; ctx.textAlign='left'; ctx.textBaseline='middle';
+  ctx.fillText('Dark mode', x0, y0+22);
+  sans(26,500); ctx.fillStyle=DIM;
+  ctx.fillText('One switch. Every surface.', x0, y0+78);
+  const f1 = ease(seg(t,10.6,10.9)) - ease(seg(t,11.7,12.0)); // on then off
+  const on = (t>=10.75 && t<11.85);
+  const anim = on ? ease(seg(t,10.6,10.9)) : 1-ease(seg(t,11.7,12.0));
+  togglePaint(x0, y0+120, 130, 64, on, anim);
+  if(on){
+    const rg=ctx.createRadialGradient(x0+100,y0+152,4,x0+100,y0+152,160);
+    rg.addColorStop(0,'rgba(240,162,74,0.35)'); rg.addColorStop(1,'rgba(240,162,74,0)');
+    ctx.fillStyle=rg; ctx.fillRect(x0-60,y0+52,320,200);
+  }
+  ctx.restore();
+  lightSweep(t,9.15,10.4,0.09);
+  sceneCaption('01 — Toggle', seg(t,9.4,10.0));
+}
+/* 3b calendar 13-17 */
+function s3b(t){
+  const e=demoEntry(t,13);
+  const card=uiCard(t,{w:620,h:520,rise:e.rise,alpha:e.alpha,scale:e.scale,y:H/2-30});
+  ctx.save(); ctx.globalAlpha=card.alpha;
+  const x0=card.x+56,y0=card.y+52;
+  sans(30,700); ctx.fillStyle=INK; ctx.textAlign='left'; ctx.textBaseline='middle';
+  ctx.fillText('September 2026', x0+10, y0+30);
+  const days=['S','M','T','W','T','F','S'];
+  for(let i=0;i<7;i++){
+    sans(22,500); ctx.fillStyle=FAINT; ctx.textAlign='center';
+    ctx.fillText(days[i], x0+36+i*74, y0+92);
+  }
+  // Sept 2026 starts Tue(2) for day 1 — grid layout deterministic
+  const start=2, dim=30;
+  const selA = ease(seg(t,15.2,15.5));
+  const rangeB = ease(seg(t,15.9,16.7));
+  const pill14 = selA > 0.35;                       // amber pill under 14 visible?
+  const pill18 = rangeB >= 1;                       // amber pill under 18 visible?
+  for(let d=0; d<dim; d++){
+    const col=(start+d)%7, row=Math.floor((start+d)/7);
+    const cx=x0+36+col*74, cy=y0+150+row*62;
+    const dd=d+1;
+    const inRange = dd>=14 && dd<=18 && rangeB>0;
+    if(dd===14 && selA>0){
+      roundRect(cx-27,cy-24,54,48,12);
+      ctx.fillStyle=`rgba(240,162,74,${0.9*selA})`; ctx.fill();
+    } else if(inRange){
+      const kk = clamp01((18-14)*(rangeB) - (dd-14-0.02));
+      roundRect(cx-33,cy-24,66,48,10);
+      ctx.fillStyle=`rgba(240,162,74,${0.22*kk})`; ctx.fill();
+      if(dd===18 && rangeB>=1){ roundRect(cx-27,cy-24,54,48,12); ctx.fillStyle='rgba(240,162,74,0.9)'; ctx.fill(); }
+    }
+    const isPill = (dd===14&&pill14)||(dd===18&&pill18);
+    sans(24,isPill?700:500);
+    ctx.fillStyle=isPill?'#141416':DIM;
+    ctx.fillText(String(dd), cx, cy+1);
+  }
+  ctx.restore();
+  lightSweep(t,13.15,14.4,0.09);
+  sceneCaption('02 — Calendar', seg(t,13.4,14.0));
+}
+/* 3c slider 17-21 */
+function s3c(t){
+  const e=demoEntry(t,17);
+  const card=uiCard(t,{w:640,h:300,rise:e.rise,alpha:e.alpha,scale:e.scale,y:H/2-30});
+  ctx.save(); ctx.globalAlpha=card.alpha;
+  const x0=card.x+70,y0=card.y+120;
+  sans(40,700); ctx.fillStyle=INK; ctx.textAlign='left'; ctx.textBaseline='middle';
+  ctx.fillText('Precision', x0, card.y+70);
+  const val = Math.round(72*easeInOut(seg(t,18.3,19.4)));
+  const frac = val/100;
+  const wTr = 480;
+  sans(34,500); ctx.fillStyle=AMBER_HI; ctx.textAlign='right';
+  ctx.fillText(String(val), x0+wTr, card.y+70);
+  // track
+  roundRect(x0,y0-8,wTr,16,8); ctx.fillStyle='rgba(255,255,255,0.10)'; ctx.fill();
+  roundRect(x0,y0-8,wTr*frac,16,8); ctx.fillStyle=AMBER; ctx.fill();
+  // thumb
+  const thx = x0 + wTr*frac;
+  ctx.shadowColor='rgba(240,162,74,0.7)'; ctx.shadowBlur=26;
+  ctx.fillStyle='#f5f3ef';
+  ctx.beginPath(); ctx.arc(thx,y0,22,0,TAU); ctx.fill();
+  ctx.shadowColor='transparent';
+  ctx.strokeStyle='rgba(240,162,74,0.9)'; ctx.lineWidth=3;
+  ctx.beginPath(); ctx.arc(thx,y0,22,0,TAU); ctx.stroke();
+  // ticks
+  for(let i=0;i<=8;i++){
+    ctx.fillStyle='rgba(255,255,255,0.18)';
+    ctx.fillRect(x0+i*(wTr/8)-1, y0+34, 2, 10);
+  }
+  ctx.restore();
+  lightSweep(t,17.15,18.4,0.09);
+  sceneCaption('03 — Slider', seg(t,17.4,18.0));
+}
+/* 3d card grid 21-25 */
+function s3d(t){
+  const e=demoEntry(t,21);
+  const card=uiCard(t,{w:720,h:460,rise:e.rise,alpha:e.alpha,scale:e.scale,y:H/2-30});
+  ctx.save(); ctx.globalAlpha=card.alpha;
+  sans(28,700); ctx.fillStyle=INK; ctx.textAlign='left'; ctx.textBaseline='middle';
+  ctx.fillText('Dashboard', card.x+50, card.y+52);
+  const titles=['Revenue','Users','Deploys','Uptime'];
+  const nums=['$24.8k','12,904','318','99.98%'];
+  for(let i=0;i<4;i++){
+    const k = backOut(seg(t, 21.6+i*0.14, 22.35+i*0.14));
+    if(k<=0) continue;
+    const gx = card.x+50 + (i%2)*322, gy = card.y+96 + Math.floor(i/2)*160;
+    const yy = gy + (1-k)*40;
+    ctx.save(); ctx.globalAlpha=card.alpha*ease(seg(t,21.6+i*0.14,22.0+i*0.14));
+    roundRect(gx, yy, 300, 138, 16);
+    ctx.fillStyle='#222228'; ctx.fill();
+    ctx.strokeStyle='rgba(255,255,255,0.16)'; ctx.lineWidth=1.5; ctx.stroke();
+    sans(22,500); ctx.fillStyle=DIM; ctx.textAlign='left';
+    ctx.fillText(titles[i], gx+24, yy+34);
+    sans(40,700); ctx.fillStyle= i===0?AMBER_HI:INK;
+    ctx.fillText(nums[i], gx+24, yy+82);
+    // sparkline
+    ctx.strokeStyle='rgba(240,162,74,0.55)'; ctx.lineWidth=2.5; ctx.beginPath();
+    const rr = mulberry32(40+i);
+    for(let px=0;px<=252;px+=28){
+      const py = yy+116 - rr()*26 - 4;
+      px===0?ctx.moveTo(gx+24+px,py):ctx.lineTo(gx+24+px,py);
+    }
+    ctx.stroke(); ctx.restore();
+  }
+  ctx.restore();
+  lightSweep(t,21.15,22.4,0.09);
+  sceneCaption('04 — Cards', seg(t,21.4,22.0));
+}
+/* 3e chart 25-29 */
+function s3e(t){
+  const e=demoEntry(t,25);
+  const card=uiCard(t,{w:720,h:460,rise:e.rise,alpha:e.alpha,scale:e.scale,y:H/2-30});
+  ctx.save(); ctx.globalAlpha=card.alpha;
+  sans(28,700); ctx.fillStyle=INK; ctx.textAlign='left'; ctx.textBaseline='middle';
+  ctx.fillText('Signals', card.x+50, card.y+52);
+  const bx=card.x+50, by=card.y+110, bw=620, bh=280;
+  // gridlines
+  for(let i=0;i<=4;i++){
+    ctx.fillStyle='rgba(255,255,255,0.05)';
+    ctx.fillRect(bx, by+bh*i/4, bw, 1);
+  }
+  const vals=[0.32,0.5,0.42,0.66,0.58,0.8,0.94];
+  vals.forEach((v,i)=>{
+    const k = easeOut(seg(t, 25.6+i*0.12, 26.5+i*0.12));
+    const h2 = bh*v*k;
+    const w2 = 52, x2 = bx + 24 + i*(bw-48)/7;
+    roundRect(x2, by+bh-h2, w2, h2, 8);
+    ctx.fillStyle = i===6?AMBER:'rgba(240,162,74,0.35)';
+    ctx.fill();
+  });
+  // line draw
+  const lk = easeInOut(seg(t,27.2,28.4));
+  if(lk>0){
+    ctx.save();
+    ctx.strokeStyle=AMBER_HI; ctx.lineWidth=3.5; ctx.lineJoin='round';
+    ctx.beginPath();
+    const pts=vals.map((v,i)=>[bx+24+ i*(bw-48)/7 +26, by+bh - bh*v + 26]);
+    const segsN = pts.length-1;
+    const upto = lk*segsN;
+    ctx.moveTo(pts[0][0],pts[0][1]);
+    for(let s2=1;s2<=Math.min(segsN,Math.floor(upto));s2++) ctx.lineTo(pts[s2][0],pts[s2][1]);
+    const fr = upto-Math.floor(upto);
+    if(fr>0 && Math.floor(upto)<segsN){
+      const a=pts[Math.floor(upto)], b=pts[Math.floor(upto)+1];
+      ctx.lineTo(lerp(a[0],b[0],fr), lerp(a[1],b[1],fr));
+    }
+    ctx.stroke();
+    const lastIdx=Math.min(segsN,Math.floor(upto));
+    const lp = pts[lastIdx];
+    ctx.fillStyle='#fff';
+    ctx.beginPath(); ctx.arc(lp[0],lp[1],6,0,TAU); ctx.fill();
+    ctx.restore();
+  }
+  ctx.restore();
+  lightSweep(t,25.15,26.4,0.09);
+  sceneCaption('05 — Chart', seg(t,25.4,26.0));
+}
+/* 3f CLI 29-33 */
+function s3f(t){
+  const e=demoEntry(t,29);
+  const card=uiCard(t,{w:840,h:420,rise:e.rise,alpha:e.alpha,scale:e.scale,y:H/2-30});
+  ctx.save(); ctx.globalAlpha=card.alpha;
+  // window bar
+  roundRect(card.x, card.y, card.w, 56, 0);
+  ctx.fillStyle='#1d1d21'; ctx.fill();
+  ['#ff5f57','#febc2e','#28c840'].forEach((c,i)=>{
+    ctx.fillStyle=c; ctx.beginPath(); ctx.arc(card.x+34+i*30, card.y+28, 8,0,TAU); ctx.fill();
+  });
+  mono(24,500); ctx.fillStyle=FAINT; ctx.textAlign='left'; ctx.textBaseline='middle';
+  ctx.fillText('gray — zsh', card.x+140, card.y+29);
+  const cmd='npx gray-ui add button';
+  const chars = Math.floor(cmd.length * ease(seg(t,30.0,31.1)));
+  const shown = cmd.slice(0,chars);
+  mono(30,500); ctx.fillStyle=INK;
+  ctx.fillText('~ $', card.x+50, card.y+130);
+  ctx.fillStyle=AMBER_HI;
+  ctx.fillText(shown, card.x+120, card.y+130);
+  // caret
+  if(Math.floor(t*3)%2===0 && chars<cmd.length){
+    ctx.fillStyle='rgba(255,255,255,0.7)';
+    const cw = ctx.measureText(shown).width;
+    ctx.fillRect(card.x+120+cw+4, card.y+112, 14, 34);
+  }
+  // result
+  const rk = seg(t,31.5,31.9);
+  if(rk>0){
+    ctx.globalAlpha=card.alpha*ease(rk);
+    mono(26,500); ctx.fillStyle='#7ec98f';
+    ctx.fillText('✓ button — added in 0.8s', card.x+50, card.y+200);
+    mono(24,500); ctx.fillStyle=FAINT;
+    ctx.fillText('  + toggle  + slider  + calendar', card.x+50, card.y+246);
+  }
+  ctx.restore();
+  lightSweep(t,29.15,30.4,0.09);
+  sceneCaption('06 — CLI', seg(t,29.4,30.0));
+}
+/* S4 PROOF 33-41 ---------------------------------------------- */
+function s4a(t){ // 33-37 words
+  bg(t);
+  const words=[['Composable.',INK],['Accessible.',INK],['Yours.',AMBER_HI]];
+  words.forEach((w,i)=>{
+    const a=seg(t, 33.5+i*0.6, 34.15+i*0.6);
+    if(a<=0) return;
+    ctx.save();
+    ctx.globalAlpha=ease(a);
+    serif(150,700); ctx.textAlign='center'; ctx.textBaseline='middle';
+    const yy = H/2-80+i*170 + (1-easeOut(a))*46;
+    ctx.fillStyle=w[1];
+    ctx.fillText(w[0], W/2, yy);
+    ctx.restore();
+  });
+  lightSweep(t,33.2,34.6,0.07);
+}
+function s4b(t){ // 37-41 source code
+  bg(t);
+  const e=demoEntry(t,37);
+  const card=uiCard(t,{w:880,h:430,rise:e.rise,alpha:e.alpha,scale:e.scale,y:H/2-40});
+  ctx.save(); ctx.globalAlpha=card.alpha;
+  const lines=[
+    ['import', ' { Button } ', 'from', ' "gray-ui"'],
+    ['', '', '', ''],
+    ['export default', ' function App() {'],
+    ['  return', ' ('],
+    ['    <Button variant="ghost">', 'Ship it', '</Button>'],
+    ['  )'],
+    ['}']
+  ];
+  mono(27,500); ctx.textAlign='left'; ctx.textBaseline='middle';
+  lines.forEach((ln,i)=>{
+    const a=seg(t, 37.7+i*0.16, 38.05+i*0.16);
+    if(a<=0) return;
+    ctx.globalAlpha=card.alpha*ease(a);
+    const yy=card.y+76+i*44;
+    ctx.fillStyle='#7ec98f'; ctx.fillText(ln[0], card.x+54, yy);
+    ctx.fillStyle=AMBER_HI; ctx.fillText(ln[1], card.x+54+ (ln[0]?ctx.measureText(ln[0]).width:0)+130, yy);
+    ctx.fillStyle=DIM; ctx.fillText(ln[2], card.x+54+(ln[0]?ctx.measureText(ln[0]).width:0)+130+(ln[1]?ctx.measureText(ln[1]).width:0), yy);
+    ctx.fillStyle='#a8c7e8'; ctx.fillText(ln[3], card.x+54+(ln[0]?ctx.measureText(ln[0]).width:0)+130+(ln[1]?ctx.measureText(ln[1]).width:0)+(ln[2]?ctx.measureText(ln[2]).width:0), yy);
+  });
+  ctx.restore();
+  // headline above card
+  ctx.save();
+  const ha=seg(t,38.6,39.3);
+  ctx.globalAlpha=ease(ha);
+  serif(64,400); ctx.textAlign='center'; ctx.fillStyle=DIM; ctx.textBaseline='middle';
+  ctx.fillText('Every piece arrives as source code.', W/2, 168);
+  ctx.restore();
+  // version chip
+  const ck=seg(t,39.6,40.1);
+  if(ck>0){
+    ctx.save();
+    ctx.globalAlpha=ease(ck);
+    const cw=150,ch=52,cx=W/2-75,cy=910;
+    roundRect(cx,cy,cw,ch,26);
+    ctx.fillStyle='rgba(240,162,74,0.12)'; ctx.fill();
+    ctx.strokeStyle='rgba(240,162,74,0.6)'; ctx.lineWidth=1.5; ctx.stroke();
+    sans(26,700); ctx.fillStyle=AMBER_HI; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText('v0.2.1', W/2, cy+ch/2+1);
+    ctx.restore();
+  }
+  lightSweep(t,37.15,38.4,0.08);
+}
+/* S5 END CARD 41-48 ------------------------------------------- */
+function s5(t){
+  bg(t);
+  const fade = seg(t,41.0,41.9);
+  const out = seg(t,47.0,47.9);
+  const A = ease(fade)*(1-ease(out));
+  // wordmark
+  ctx.save();
+  ctx.globalAlpha=A;
+  serif(210,700); ctx.textAlign='center'; ctx.textBaseline='middle';
+  const gw = lerp(0.94,1.0,ease(seg(t,41.4,42.6)));
+  ctx.translate(W/2, H/2-70); ctx.scale(gw,gw);
+  ctx.fillStyle=INK;
+  ctx.fillText('GRAY UI', 0, 0);
+  // glint sweep across the wordmark
+  const gk = seg(t,42.5,43.4);
+  if(gk>0&&gk<1){
+    ctx.save();
+    ctx.globalCompositeOperation='source-atop';
+    const gx = lerp(-350,350,gk);
+    const gl = ctx.createLinearGradient(gx-160,-140,gx+160,140);
+    gl.addColorStop(0,'rgba(255,255,255,0)');
+    gl.addColorStop(0.5,'rgba(255,240,214,0.9)');
+    gl.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle=gl;
+    ctx.fillRect(-W/2,-160,W,320);
+    ctx.restore();
+  }
+  ctx.restore();
+  // underline
+  const ul=seg(t,43.3,43.9);
+  if(ul>0){
+    ctx.save(); ctx.globalAlpha=A*0.9;
+    ctx.strokeStyle=AMBER; ctx.lineWidth=5; ctx.lineCap='round';
+    const wBar=lerp(0,560,easeOut(ul));
+    ctx.beginPath(); ctx.moveTo(W/2-wBar/2,H/2+60); ctx.lineTo(W/2+wBar/2,H/2+60); ctx.stroke();
+    ctx.restore();
+  }
+  // tagline
+  const tg=seg(t,43.9,44.6);
+  if(tg>0){
+    ctx.save(); ctx.globalAlpha=A*ease(tg);
+    sans(44,500); ctx.fillStyle=DIM; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText('The Backbone of Your Design System', W/2, H/2+150);
+    ctx.restore();
+  }
+  // credit line
+  const cr=seg(t,44.7,45.3);
+  if(cr>0){
+    ctx.save(); ctx.globalAlpha=A*ease(cr);
+    sans(30,500); ctx.fillStyle=FAINT; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText('Graytell Labs — owned by Anubhav Sapkota', W/2, H/2+226);
+    ctx.restore();
+  }
+  // CTA chip
+  const ct=seg(t,45.4,46.0);
+  if(ct>0){
+    ctx.save();
+    const k=ease(ct);
+    ctx.globalAlpha=A*k;
+    const cw=560,ch=76,cx=W/2-280,cy=H/2+290;
+    roundRect(cx,cy,cw,ch,38);
+    ctx.fillStyle='rgba(240,162,74,0.10)'; ctx.fill();
+    ctx.strokeStyle='rgba(240,162,74,0.65)'; ctx.lineWidth=1.5; ctx.stroke();
+    sans(34,700); ctx.fillStyle=AMBER_HI; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText('gray-ui.vercel.app', W/2, cy+ch/2+1);
+    ctx.restore();
+  }
+  lightSweep(t,42.5,43.5,0.14);
+}
+/* master composition ------------------------------------------- */
+function render(t){
+  ctx.setTransform(1,0,0,1,0,0);
+  ctx.clearRect(0,0,W,H);
+  // gate weave
+  const dx = Math.sin(t*0.7)*1.3 + Math.sin(t*1.31)*0.7;
+  const dy = Math.cos(t*0.53)*1.1 + Math.sin(t*1.13)*0.5;
+  ctx.save();
+  ctx.translate(Math.round(dx),Math.round(dy));
+  if(t<4) s1(t);
+  else if(t<9) s2(t);
+  else if(t<13) s3a(t);
+  else if(t<17) s3b(t);
+  else if(t<21) s3c(t);
+  else if(t<25) s3d(t);
+  else if(t<29) s3e(t);
+  else if(t<33) s3f(t);
+  else if(t<37) s4a(t);
+  else if(t<41) s4b(t);
+  else s5(t);
+  ctx.restore();
+  vignette();
+  grain(t);
+  letterbox();
+  // master fades: fi rises 0→1 over the first 0.35s; fo rises at the tail
+  const fi = seg(t,0,0.35), fo = seg(t,47.15,47.95);
+  const m = fi*(1-fo);
+  if(m<1){
+    ctx.fillStyle=`rgba(0,0,0,${1-m})`;
+    ctx.fillRect(0,0,W,H);
+  }
+}
+</script>
+</body>
+</html>
